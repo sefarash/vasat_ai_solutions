@@ -1,0 +1,751 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vasat AI Solutions — AI Voice Agents for Home Service Contractors</title>
+  <style>
+    /* ── Reset & Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; }
+    body {
+      font-family: 'Segoe UI', system-ui, -apple-system, sans-serif;
+      background: #ffffff;
+      color: #1a2340;
+      line-height: 1.6;
+    }
+
+    /* ── Tokens ── */
+    :root {
+      --navy:       #0d1b3e;
+      --navy-mid:   #1a2f5a;
+      --navy-light: #243b6e;
+      --accent:     #2d8cff;
+      --accent-hover: #1a78f0;
+      --white:      #ffffff;
+      --off-white:  #f4f7ff;
+      --text-muted: #8fa3c8;
+      --border:     rgba(255,255,255,0.12);
+      --radius:     10px;
+      --shadow:     0 4px 24px rgba(13,27,62,0.18);
+    }
+
+    /* ── Utility ── */
+    .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+    .btn {
+      display: inline-block;
+      padding: 14px 28px;
+      border-radius: 6px;
+      font-weight: 600;
+      font-size: 0.95rem;
+      cursor: pointer;
+      text-decoration: none;
+      transition: all 0.2s ease;
+      border: none;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: var(--white);
+    }
+    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,140,255,0.35); }
+    .btn-outline {
+      background: transparent;
+      color: var(--white);
+      border: 2px solid rgba(255,255,255,0.6);
+    }
+    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .section-label {
+      display: inline-block;
+      font-size: 0.75rem;
+      font-weight: 700;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 12px;
+    }
+    .section-title {
+      font-size: clamp(1.75rem, 3.5vw, 2.5rem);
+      font-weight: 800;
+      line-height: 1.2;
+      color: var(--navy);
+    }
+    .section-title.light { color: var(--white); }
+    .section-subtitle {
+      font-size: 1.05rem;
+      color: #4a5e8a;
+      margin-top: 12px;
+      max-width: 560px;
+    }
+    .section-subtitle.light { color: var(--text-muted); }
+
+    /* ── NAV ── */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: var(--navy);
+      border-bottom: 1px solid var(--border);
+      padding: 0 24px;
+    }
+    .nav-inner {
+      max-width: 1100px;
+      margin: 0 auto;
+      height: 64px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-logo {
+      font-size: 1.2rem;
+      font-weight: 800;
+      color: var(--white);
+      text-decoration: none;
+      letter-spacing: -0.02em;
+    }
+    .nav-logo span { color: var(--accent); }
+
+    /* ── HERO ── */
+    #hero {
+      background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 60%, #0a2050 100%);
+      padding: 100px 24px 80px;
+      text-align: center;
+      position: relative;
+      overflow: hidden;
+    }
+    #hero::before {
+      content: '';
+      position: absolute;
+      top: -120px; left: 50%;
+      transform: translateX(-50%);
+      width: 700px; height: 700px;
+      background: radial-gradient(circle, rgba(45,140,255,0.12) 0%, transparent 70%);
+      pointer-events: none;
+    }
+    .hero-badge {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      background: rgba(45,140,255,0.15);
+      border: 1px solid rgba(45,140,255,0.35);
+      border-radius: 50px;
+      padding: 6px 16px;
+      font-size: 0.82rem;
+      font-weight: 600;
+      color: #7bb8ff;
+      margin-bottom: 28px;
+    }
+    .hero-badge::before { content: '●'; font-size: 0.55rem; color: #4dff91; }
+    #hero h1 {
+      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1.12;
+      margin-bottom: 20px;
+      letter-spacing: -0.03em;
+    }
+    #hero h1 em {
+      font-style: normal;
+      color: var(--accent);
+    }
+    #hero p {
+      font-size: 1.15rem;
+      color: #a8bfe0;
+      max-width: 580px;
+      margin: 0 auto 36px;
+    }
+    .hero-ctas {
+      display: flex;
+      gap: 14px;
+      justify-content: center;
+      flex-wrap: wrap;
+      margin-bottom: 64px;
+    }
+    .hero-ctas .btn { font-size: 1rem; padding: 16px 32px; }
+    .stat-cards {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+      max-width: 760px;
+      margin: 0 auto;
+    }
+    .stat-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 24px 20px;
+      backdrop-filter: blur(6px);
+    }
+    .stat-card .stat-value {
+      font-size: 2rem;
+      font-weight: 900;
+      color: var(--white);
+      display: block;
+    }
+    .stat-card .stat-label {
+      font-size: 0.82rem;
+      color: var(--text-muted);
+      margin-top: 4px;
+    }
+
+    /* ── PROBLEM / SOLUTION ── */
+    #problem {
+      padding: 90px 24px;
+      background: var(--off-white);
+    }
+    .ps-header { text-align: center; margin-bottom: 56px; }
+    .ps-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+    }
+    .ps-col {
+      border-radius: var(--radius);
+      padding: 36px 32px;
+    }
+    .ps-col.pain {
+      background: #fff0f0;
+      border: 1px solid #ffcdd2;
+    }
+    .ps-col.fix {
+      background: #eef6ff;
+      border: 1px solid #bdd9ff;
+    }
+    .ps-col h3 {
+      font-size: 1.2rem;
+      font-weight: 800;
+      margin-bottom: 20px;
+    }
+    .ps-col.pain h3 { color: #c0392b; }
+    .ps-col.fix  h3 { color: #1a6fd4; }
+    .ps-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
+    .ps-list li {
+      display: flex;
+      align-items: flex-start;
+      gap: 10px;
+      font-size: 0.95rem;
+      color: #2a3550;
+    }
+    .ps-list li .icon {
+      flex-shrink: 0;
+      width: 22px;
+      height: 22px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.7rem;
+      font-weight: 800;
+      margin-top: 1px;
+    }
+    .pain .icon { background: #ffcdd2; color: #c0392b; }
+    .fix  .icon { background: #bdd9ff; color: #1a6fd4; }
+
+    /* ── HOW IT WORKS ── */
+    #how {
+      padding: 90px 24px;
+      background: var(--navy);
+    }
+    #how .ps-header { text-align: center; margin-bottom: 56px; }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 40px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent 50%, var(--accent));
+      opacity: 0.3;
+    }
+    .step {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 32px 24px;
+      text-align: center;
+    }
+    .step-num {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 1.3rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step h3 { color: var(--white); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
+    .step p  { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ── TESTIMONIAL ── */
+    #testimonial {
+      padding: 90px 24px;
+      background: var(--off-white);
+      text-align: center;
+    }
+    .quote-card {
+      max-width: 720px;
+      margin: 0 auto;
+      background: var(--white);
+      border-radius: 14px;
+      padding: 48px 40px;
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .quote-card::before {
+      content: '\201C';
+      position: absolute;
+      top: -10px; left: 36px;
+      font-size: 6rem;
+      color: var(--accent);
+      line-height: 1;
+      opacity: 0.25;
+      font-family: Georgia, serif;
+    }
+    .quote-text {
+      font-size: 1.2rem;
+      font-style: italic;
+      color: #2a3550;
+      line-height: 1.7;
+      margin-bottom: 28px;
+    }
+    .quote-author { display: flex; align-items: center; gap: 14px; justify-content: center; }
+    .avatar {
+      width: 52px; height: 52px;
+      border-radius: 50%;
+      background: linear-gradient(135deg, var(--accent), var(--navy-mid));
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      color: var(--white);
+      font-weight: 800;
+      font-size: 1.1rem;
+    }
+    .author-info { text-align: left; }
+    .author-name { font-weight: 700; color: var(--navy); }
+    .author-role { font-size: 0.85rem; color: #6b7fa3; }
+    .stars { color: #f5a623; font-size: 1rem; letter-spacing: 1px; margin-bottom: 6px; }
+
+    /* ── PRICING ── */
+    #pricing {
+      padding: 90px 24px;
+      background: var(--navy);
+      text-align: center;
+    }
+    .pricing-card {
+      max-width: 480px;
+      margin: 48px auto 0;
+      background: rgba(255,255,255,0.07);
+      border: 1px solid rgba(45,140,255,0.4);
+      border-radius: 16px;
+      padding: 44px 40px;
+      position: relative;
+      overflow: hidden;
+    }
+    .pricing-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 4px;
+      background: linear-gradient(90deg, var(--accent), #6db8ff);
+    }
+    .pricing-badge {
+      display: inline-block;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.72rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 4px 12px;
+      border-radius: 50px;
+      margin-bottom: 20px;
+    }
+    .pricing-plan { color: var(--white); font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
+    .pricing-price {
+      font-size: 3.2rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 6px;
+    }
+    .pricing-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 10px; display: inline-block; }
+    .pricing-price sub { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
+    .pricing-note { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 28px; }
+    .pricing-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
+    .feature-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
+    .feature-list li {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+      color: #c8d8f0;
+      font-size: 0.93rem;
+    }
+    .feature-list li::before {
+      content: '✓';
+      width: 20px; height: 20px;
+      background: rgba(45,140,255,0.2);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 0.7rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+    }
+    .pricing-card .btn { width: 100%; text-align: center; font-size: 1rem; padding: 16px; }
+    .pricing-guarantee {
+      margin-top: 16px;
+      font-size: 0.8rem;
+      color: var(--text-muted);
+    }
+
+    /* ── FAQ ── */
+    #faq {
+      padding: 90px 24px;
+      background: var(--off-white);
+    }
+    .faq-header { text-align: center; margin-bottom: 48px; }
+    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-item {
+      background: var(--white);
+      border: 1px solid #dde6f5;
+      border-radius: var(--radius);
+      overflow: hidden;
+    }
+    .faq-question {
+      width: 100%;
+      background: none;
+      border: none;
+      text-align: left;
+      padding: 20px 24px;
+      font-size: 0.98rem;
+      font-weight: 700;
+      color: var(--navy);
+      cursor: pointer;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      gap: 12px;
+      transition: background 0.15s;
+    }
+    .faq-question:hover { background: #f0f5ff; }
+    .faq-icon {
+      width: 24px; height: 24px;
+      border-radius: 50%;
+      background: var(--off-white);
+      border: 1px solid #dde6f5;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      font-size: 1rem;
+      color: var(--accent);
+      transition: transform 0.25s, background 0.2s;
+    }
+    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .faq-answer {
+      max-height: 0;
+      overflow: hidden;
+      transition: max-height 0.35s ease, padding 0.25s;
+      padding: 0 24px;
+      font-size: 0.93rem;
+      color: #4a5e8a;
+      line-height: 1.7;
+    }
+    .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
+
+    /* ── FOOTER ── */
+    footer {
+      background: var(--navy);
+      border-top: 1px solid var(--border);
+      padding: 48px 24px;
+      text-align: center;
+    }
+    .footer-logo {
+      font-size: 1.3rem;
+      font-weight: 800;
+      color: var(--white);
+      margin-bottom: 8px;
+    }
+    .footer-logo span { color: var(--accent); }
+    .footer-tagline { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px; }
+    .footer-location { color: #5a7098; font-size: 0.82rem; }
+    .footer-divider { border: none; border-top: 1px solid var(--border); margin: 24px auto; max-width: 200px; }
+    .footer-copy { color: #3a4e6a; font-size: 0.78rem; }
+
+    /* ── RESPONSIVE ── */
+    @media (max-width: 768px) {
+      .stat-cards  { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .stat-card   { padding: 18px 12px; }
+      .stat-card .stat-value { font-size: 1.5rem; }
+      .ps-grid     { grid-template-columns: 1fr; }
+      .steps       { grid-template-columns: 1fr; }
+      .steps::before { display: none; }
+      .pricing-card { padding: 32px 24px; }
+    }
+    @media (max-width: 480px) {
+      .stat-cards { grid-template-columns: 1fr; }
+      .quote-card { padding: 36px 24px; }
+      .hero-ctas .btn { width: 100%; text-align: center; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- ══════════════════════════════════════
+     1. NAV
+══════════════════════════════════════ -->
+<nav>
+  <div class="nav-inner">
+    <a href="#hero" class="nav-logo">Vasat<span>AI</span> Solutions</a>
+    <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Call</a>
+  </div>
+</nav>
+
+<!-- ══════════════════════════════════════
+     2. HERO
+══════════════════════════════════════ -->
+<section id="hero">
+  <div class="container">
+    <div class="hero-badge">AI Voice Agents for Home Service Contractors</div>
+    <h1>Stop Losing Jobs to<br><em>Missed Calls &amp; Slow Follow-Up</em></h1>
+    <p>Our AI voice agent calls every new lead within 60 seconds — day or night — so you book more jobs without hiring extra staff.</p>
+    <div class="hero-ctas">
+      <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Strategy Call</a>
+      <a href="#how" class="btn btn-outline">See How It Works</a>
+    </div>
+    <div class="stat-cards">
+      <div class="stat-card">
+        <span class="stat-value">60s</span>
+        <span class="stat-label">Average response time to new leads</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">3×</span>
+        <span class="stat-label">More bookings from existing traffic</span>
+      </div>
+      <div class="stat-card">
+        <span class="stat-value">24/7</span>
+        <span class="stat-label">Nights, weekends &amp; holidays covered</span>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     3. PROBLEM / SOLUTION
+══════════════════════════════════════ -->
+<section id="problem">
+  <div class="container">
+    <div class="ps-header">
+      <span class="section-label">The Real Problem</span>
+      <h2 class="section-title">Every Missed Call Is a Job Going to Your Competitor</h2>
+      <p class="section-subtitle">Home service contractors lose thousands of dollars every week because of the same avoidable problems.</p>
+    </div>
+    <div class="ps-grid">
+      <!-- Pain -->
+      <div class="ps-col pain">
+        <h3>❌ Without Vasat AI</h3>
+        <ul class="ps-list">
+          <li><span class="icon">✕</span>Leads call, get voicemail, and hire someone else in minutes</li>
+          <li><span class="icon">✕</span>Your team can't follow up while they're on a job</li>
+          <li><span class="icon">✕</span>After-hours and weekend calls go completely unanswered</li>
+          <li><span class="icon">✕</span>Inconsistent follow-up means slow revenue growth</li>
+          <li><span class="icon">✕</span>Hiring a receptionist costs $3,000–$5,000/month</li>
+        </ul>
+      </div>
+      <!-- Fix -->
+      <div class="ps-col fix">
+        <h3>✅ With Vasat AI</h3>
+        <ul class="ps-list">
+          <li><span class="icon">✓</span>AI calls every new lead within 60 seconds — automatically</li>
+          <li><span class="icon">✓</span>Qualifies the job, books the appointment, sends confirmation</li>
+          <li><span class="icon">✓</span>Works 24/7 — never sick, never on another call</li>
+          <li><span class="icon">✓</span>Consistent, professional follow-up on every single lead</li>
+          <li><span class="icon">✓</span>Fraction of the cost of a full-time front-desk hire</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     4. HOW IT WORKS
+══════════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="ps-header">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title light">Up and Running in 3 Simple Steps</h2>
+      <p class="section-subtitle light">No technical skills required. We handle the entire setup for you.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>We Build Your AI Agent</h3>
+        <p>We train a custom voice agent on your business — your services, pricing, availability, and how you like to sound on the phone.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>Connect Your Lead Sources</h3>
+        <p>We plug your AI agent into your website, Google Ads, Angi, Thumbtack, or any lead source you use — zero downtime.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>Watch the Bookings Roll In</h3>
+        <p>Every new lead gets an instant call. Qualified jobs land on your calendar automatically. You just show up and do the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     5. TESTIMONIAL
+══════════════════════════════════════ -->
+<section id="testimonial">
+  <div class="container">
+    <span class="section-label">Real Results</span>
+    <div class="quote-card">
+      <div class="stars">★★★★★</div>
+      <p class="quote-text">
+        "I was skeptical at first — I didn't think a robot could represent my HVAC business. But the AI sounds so natural that customers can't tell the difference. Within the first 30 days we booked 14 extra jobs we would have missed. It's paid for itself ten times over."
+      </p>
+      <div class="quote-author">
+        <div class="avatar">MR</div>
+        <div class="author-info">
+          <div class="author-name">Marcus R.</div>
+          <div class="author-role">Owner, Premier HVAC Services — Houston, TX</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     6. PRICING
+══════════════════════════════════════ -->
+<section id="pricing">
+  <div class="container">
+    <span class="section-label">Simple Pricing</span>
+    <h2 class="section-title light">One Plan. Everything Included.</h2>
+    <p class="section-subtitle light" style="margin:12px auto 0; text-align:center;">No hidden fees. No long-term contracts. Cancel anytime.</p>
+    <div class="pricing-card">
+      <div class="pricing-badge">Most Popular</div>
+      <div class="pricing-plan">AI Voice Agent — Full Service</div>
+      <div class="pricing-price"><sup>$</sup>997<sub>/mo</sub></div>
+      <div class="pricing-note">Everything you need to never miss another lead.</div>
+      <hr class="pricing-divider" />
+      <ul class="feature-list">
+        <li>Custom AI voice agent trained on your business</li>
+        <li>Instant lead callback (within 60 seconds)</li>
+        <li>Appointment booking &amp; calendar sync</li>
+        <li>24/7 coverage — nights, weekends &amp; holidays</li>
+        <li>Integration with your existing lead sources</li>
+        <li>Monthly performance reports</li>
+        <li>Dedicated onboarding &amp; support specialist</li>
+        <li>Unlimited calls — no per-call charges</li>
+      </ul>
+      <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Get Started Today</a>
+      <p class="pricing-guarantee">30-day money-back guarantee if you don't see results.</p>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     7. FAQ
+══════════════════════════════════════ -->
+<section id="faq">
+  <div class="container">
+    <div class="faq-header">
+      <span class="section-label">FAQ</span>
+      <h2 class="section-title">Common Questions</h2>
+    </div>
+    <div class="faq-list">
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Will my customers know they're talking to an AI?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Our AI agents are designed to sound natural and professional. Most customers simply experience a fast, friendly response. The agent focuses the conversation on booking the job — not on revealing what it is. That said, if a customer directly asks, the agent will be transparent.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does it take to get set up?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Most contractors are live within 5–7 business days. We handle the entire setup, including training the agent on your services, integrating with your lead sources, and testing the call flow before we go live.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Does it work with my current scheduling software?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. We integrate with the most common tools used by home service contractors, including Google Calendar, Jobber, ServiceTitan, Housecall Pro, and more. If you're using something else, we'll scope the integration during your onboarding call.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What kinds of contractors is this best suited for?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Vasat AI is built specifically for home service businesses — HVAC, plumbing, appliance repair, roofing, electrical, general contracting, and more. If your business depends on inbound leads and phone bookings, this system will work for you.
+        </div>
+      </div>
+
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     8. FOOTER
+══════════════════════════════════════ -->
+<footer>
+  <div class="footer-logo">Vasat<span>AI</span> Solutions</div>
+  <p class="footer-tagline">AI Voice Agents for Home Service Contractors</p>
+  <p class="footer-location">Houston, TX</p>
+  <hr class="footer-divider" />
+  <p class="footer-copy">&copy; 2026 Vasat AI Solutions. All rights reserved.</p>
+</footer>
+
+<!-- ══════════════════════════════════════
+     JS: FAQ Accordion
+══════════════════════════════════════ -->
+<script>
+  document.querySelectorAll('.faq-question').forEach(function(btn) {
+    btn.addEventListener('click', function() {
+      var item = this.closest('.faq-item');
+      var isOpen = item.classList.contains('open');
+
+      // Close all open items
+      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
+        openItem.classList.remove('open');
+        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      });
+
+      // Toggle clicked item
+      if (!isOpen) {
+        item.classList.add('open');
+        this.setAttribute('aria-expanded', 'true');
+      }
+    });
+  });
+</script>
+
+</body>
+</html>
