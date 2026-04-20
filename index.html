@@ -3,9 +3,13 @@
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Vasat AI Solutions — AI Voice Agents for Home Service Contractors</title>
+  <meta name="description" content="Vasatai builds and manages your complete growth system — AI voice agent, custom CRM, local website, and Meta ads. Use one service or deploy the full stack. Every solution tailored to your home service business." />
+  <title>Vasat AI Solutions — Full Stack AI Solutions for Home Service Contractors</title>
   <style>
-    /* ── Reset & Base ── */
+
+    /* ══════════════════════════════════════
+       RESET & BASE
+    ══════════════════════════════════════ */
     *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
     html { scroll-behavior: smooth; }
     body {
@@ -15,23 +19,31 @@
       line-height: 1.6;
     }
 
-    /* ── Tokens ── */
+    /* ══════════════════════════════════════
+       DESIGN TOKENS
+    ══════════════════════════════════════ */
     :root {
-      --navy:       #0d1b3e;
-      --navy-mid:   #1a2f5a;
-      --navy-light: #243b6e;
-      --accent:     #2d8cff;
+      --navy:         #0d1b3e;
+      --navy-mid:     #1a2f5a;
+      --navy-light:   #243b6e;
+      --accent:       #2d8cff;
       --accent-hover: #1a78f0;
-      --white:      #ffffff;
-      --off-white:  #f4f7ff;
-      --text-muted: #8fa3c8;
-      --border:     rgba(255,255,255,0.12);
-      --radius:     10px;
-      --shadow:     0 4px 24px rgba(13,27,62,0.18);
+      --white:        #ffffff;
+      --off-white:    #f4f7ff;
+      --text-muted:   #8fa3c8;
+      --border:       rgba(255,255,255,0.12);
+      --border-light: #dde6f5;
+      --radius:       10px;
+      --radius-lg:    14px;
+      --shadow:       0 4px 24px rgba(13,27,62,0.18);
+      --shadow-lg:    0 12px 48px rgba(13,27,62,0.22);
     }
 
-    /* ── Utility ── */
+    /* ══════════════════════════════════════
+       UTILITY
+    ══════════════════════════════════════ */
     .container { max-width: 1100px; margin: 0 auto; padding: 0 24px; }
+
     .btn {
       display: inline-block;
       padding: 14px 28px;
@@ -43,23 +55,11 @@
       transition: all 0.2s ease;
       border: none;
     }
-    .btn-primary {
-      background: var(--accent);
-      color: var(--white);
-    }
-    .btn-primary:hover { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,140,255,0.35); }
-    .btn-outline {
-      background: transparent;
-      color: var(--white);
-      border: 2px solid rgba(255,255,255,0.6);
-    }
-    .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
-    .btn-outline-dark {
-      background: transparent;
-      color: var(--navy);
-      border: 2px solid var(--navy);
-    }
-    .btn-outline-dark:hover { background: var(--navy); color: var(--white); }
+    .btn-primary  { background: var(--accent); color: var(--white); }
+    .btn-primary:hover  { background: var(--accent-hover); transform: translateY(-1px); box-shadow: 0 6px 20px rgba(45,140,255,0.35); }
+    .btn-outline  { background: transparent; color: var(--white); border: 2px solid rgba(255,255,255,0.6); }
+    .btn-outline:hover  { background: rgba(255,255,255,0.1); border-color: var(--white); }
+
     .section-label {
       display: inline-block;
       font-size: 0.75rem;
@@ -80,11 +80,15 @@
       font-size: 1.05rem;
       color: #4a5e8a;
       margin-top: 12px;
-      max-width: 560px;
+      max-width: 600px;
     }
     .section-subtitle.light { color: var(--text-muted); }
+    .section-header { text-align: center; margin-bottom: 52px; }
+    .section-header .section-subtitle { margin-left: auto; margin-right: auto; }
 
-    /* ── NAV ── */
+    /* ══════════════════════════════════════
+       1. NAVBAR
+    ══════════════════════════════════════ */
     nav {
       position: sticky;
       top: 0;
@@ -100,20 +104,50 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
+      gap: 20px;
     }
     .nav-logo {
-      font-size: 1.2rem;
+      font-size: 1.1rem;
       font-weight: 800;
       color: var(--white);
       text-decoration: none;
       letter-spacing: -0.02em;
+      white-space: nowrap;
+      flex-shrink: 0;
+      line-height: 1.3;
     }
     .nav-logo span { color: var(--accent); }
+    .nav-logo small {
+      display: block;
+      font-size: 0.62rem;
+      font-weight: 500;
+      letter-spacing: 0.04em;
+      color: var(--text-muted);
+      text-transform: uppercase;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 26px;
+      flex: 1;
+      justify-content: center;
+    }
+    .nav-links a {
+      color: rgba(255,255,255,0.68);
+      text-decoration: none;
+      font-size: 0.87rem;
+      font-weight: 500;
+      white-space: nowrap;
+      transition: color 0.15s;
+    }
+    .nav-links a:hover { color: var(--white); }
 
-    /* ── HERO ── */
+    /* ══════════════════════════════════════
+       2. HERO
+    ══════════════════════════════════════ */
     #hero {
       background: linear-gradient(145deg, var(--navy) 0%, var(--navy-mid) 60%, #0a2050 100%);
-      padding: 100px 24px 80px;
+      padding: 100px 24px 88px;
       text-align: center;
       position: relative;
       overflow: hidden;
@@ -123,8 +157,8 @@
       position: absolute;
       top: -120px; left: 50%;
       transform: translateX(-50%);
-      width: 700px; height: 700px;
-      background: radial-gradient(circle, rgba(45,140,255,0.12) 0%, transparent 70%);
+      width: 800px; height: 800px;
+      background: radial-gradient(circle, rgba(45,140,255,0.11) 0%, transparent 68%);
       pointer-events: none;
     }
     .hero-badge {
@@ -134,47 +168,41 @@
       background: rgba(45,140,255,0.15);
       border: 1px solid rgba(45,140,255,0.35);
       border-radius: 50px;
-      padding: 6px 16px;
-      font-size: 0.82rem;
+      padding: 6px 18px;
+      font-size: 0.81rem;
       font-weight: 600;
       color: #7bb8ff;
-      margin-bottom: 28px;
+      margin-bottom: 30px;
+      letter-spacing: 0.01em;
     }
-    .hero-badge::before { content: '●'; font-size: 0.55rem; color: #4dff91; }
+    .hero-badge::before { content: '●'; font-size: 0.52rem; color: #4dff91; }
     #hero h1 {
-      font-size: clamp(2.2rem, 5.5vw, 3.8rem);
+      font-size: clamp(1.95rem, 4.6vw, 3.4rem);
       font-weight: 900;
       color: var(--white);
-      line-height: 1.12;
-      margin-bottom: 20px;
+      line-height: 1.13;
+      margin-bottom: 24px;
       letter-spacing: -0.03em;
+      max-width: 840px;
+      margin-left: auto;
+      margin-right: auto;
     }
-    #hero h1 em {
-      font-style: normal;
-      color: var(--accent);
-    }
-    #hero .hero-sub1 {
-      font-size: 1.15rem;
+    #hero h1 em { font-style: normal; color: var(--accent); }
+    #hero .hero-sub {
+      font-size: 1.1rem;
       color: #a8bfe0;
-      max-width: 580px;
-      margin: 0 auto 14px;
-    }
-    #hero .hero-sub2 {
-      font-size: 0.93rem;
-      color: #7bb8ff;
-      max-width: 540px;
-      margin: 0 auto 36px;
-      opacity: 0.9;
-      font-style: italic;
+      max-width: 640px;
+      margin: 0 auto 40px;
+      line-height: 1.72;
     }
     .hero-ctas {
       display: flex;
       gap: 14px;
       justify-content: center;
       flex-wrap: wrap;
-      margin-bottom: 64px;
+      margin-bottom: 68px;
     }
-    .hero-ctas .btn { font-size: 1rem; padding: 16px 32px; }
+    .hero-ctas .btn { font-size: 1rem; padding: 16px 34px; }
     .stat-cards {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
@@ -186,120 +214,64 @@
       background: rgba(255,255,255,0.06);
       border: 1px solid var(--border);
       border-radius: var(--radius);
-      padding: 24px 20px;
+      padding: 26px 20px;
       backdrop-filter: blur(6px);
     }
-    .stat-card .stat-value {
-      font-size: 2rem;
+    .stat-value {
+      font-size: 2.1rem;
       font-weight: 900;
       color: var(--white);
       display: block;
+      line-height: 1;
     }
-    .stat-card .stat-label {
-      font-size: 0.82rem;
+    .stat-label {
+      font-size: 0.8rem;
       color: var(--text-muted);
-      margin-top: 4px;
+      margin-top: 6px;
+      line-height: 1.4;
     }
 
-    /* ── PROBLEM / SOLUTION ── */
+    /* ══════════════════════════════════════
+       3. PROBLEM — COSTLY CYCLE
+    ══════════════════════════════════════ */
     #problem {
       padding: 90px 24px;
       background: var(--off-white);
     }
-    .ps-header { text-align: center; margin-bottom: 56px; }
-    .ps-grid {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
-    }
-    .ps-col {
-      border-radius: var(--radius);
-      padding: 36px 32px;
-    }
-    .ps-col.pain {
-      background: #fff0f0;
-      border: 1px solid #ffcdd2;
-    }
-    .ps-col.fix {
-      background: #eef6ff;
-      border: 1px solid #bdd9ff;
-    }
-    .ps-col h3 {
-      font-size: 1.2rem;
-      font-weight: 800;
-      margin-bottom: 20px;
-    }
-    .ps-col.pain h3 { color: #c0392b; }
-    .ps-col.fix  h3 { color: #1a6fd4; }
-    .ps-list { list-style: none; display: flex; flex-direction: column; gap: 12px; }
-    .ps-list li {
-      display: flex;
-      align-items: flex-start;
-      gap: 10px;
-      font-size: 0.95rem;
-      color: #2a3550;
-    }
-    .ps-list li .icon {
-      flex-shrink: 0;
-      width: 22px;
-      height: 22px;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 0.7rem;
-      font-weight: 800;
-      margin-top: 1px;
-    }
-    .pain .icon { background: #ffcdd2; color: #c0392b; }
-    .fix  .icon { background: #bdd9ff; color: #1a6fd4; }
-
-    /* ── COST CYCLE ── */
     .cost-cycle-wrap {
-      margin: 52px auto 0;
-      max-width: 560px;
-    }
-    .cost-cycle-label {
-      text-align: center;
-      font-size: 0.8rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      color: #c0392b;
-      margin-bottom: 20px;
-    }
-    .cost-cycle {
-      display: flex;
-      flex-direction: column;
-      gap: 0;
+      max-width: 540px;
+      margin: 0 auto;
     }
     .cc-step {
       background: var(--white);
       border: 1px solid #ffcdd2;
       border-radius: var(--radius);
-      padding: 14px 20px;
+      padding: 15px 22px;
       display: flex;
       align-items: center;
       gap: 14px;
-      font-size: 0.92rem;
+      font-size: 0.93rem;
       color: #2a3550;
       font-weight: 500;
+      line-height: 1.4;
     }
-    .cc-bullet {
-      width: 30px; height: 30px;
+    .cc-num {
+      width: 32px;
+      height: 32px;
       border-radius: 50%;
       background: #ffede8;
       color: #c0392b;
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 0.85rem;
+      font-size: 0.78rem;
+      font-weight: 800;
       flex-shrink: 0;
     }
     .cc-arrow {
       text-align: center;
       color: #e57373;
-      font-size: 1.3rem;
+      font-size: 1.35rem;
       line-height: 1;
       padding: 5px 0;
       user-select: none;
@@ -308,61 +280,39 @@
       background: #fff0f0;
       border: 2px solid #c0392b;
       border-radius: var(--radius);
-      padding: 18px 24px;
+      padding: 20px 28px;
       text-align: center;
       font-weight: 800;
       color: #c0392b;
-      font-size: 1.05rem;
+      font-size: 1rem;
+      line-height: 1.5;
     }
-
-    /* ── HOW IT WORKS ── */
-    #how {
-      padding: 90px 24px;
-      background: var(--navy);
+    .cc-total-amount {
+      display: block;
+      font-size: 1.45rem;
+      margin-top: 4px;
+      letter-spacing: -0.02em;
     }
-    #how .ps-header { text-align: center; margin-bottom: 56px; }
-    .steps {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 24px;
-      position: relative;
-    }
-    .steps::before {
-      content: '';
-      position: absolute;
-      top: 40px; left: calc(16.66% + 20px); right: calc(16.66% + 20px);
-      height: 2px;
-      background: linear-gradient(90deg, var(--accent), transparent 50%, var(--accent));
-      opacity: 0.3;
-    }
-    .step {
-      background: rgba(255,255,255,0.05);
-      border: 1px solid var(--border);
-      border-radius: var(--radius);
-      padding: 32px 24px;
+    .problem-closer {
       text-align: center;
+      margin-top: 36px;
+      font-size: 1rem;
+      color: #4a5e8a;
+      font-weight: 500;
     }
-    .step-num {
-      width: 52px; height: 52px;
-      border-radius: 50%;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 1.3rem;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      margin: 0 auto 20px;
+    .problem-closer em {
+      font-style: normal;
+      color: var(--accent);
+      font-weight: 700;
     }
-    .step h3 { color: var(--white); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
-    .step p  { color: var(--text-muted); font-size: 0.9rem; }
 
-    /* ── SERVICES ── */
+    /* ══════════════════════════════════════
+       4. SERVICES
+    ══════════════════════════════════════ */
     #services {
       padding: 90px 24px;
-      background: var(--off-white);
+      background: var(--white);
     }
-    .services-header { text-align: center; margin-bottom: 52px; }
     .services-grid {
       display: grid;
       grid-template-columns: repeat(2, 1fr);
@@ -370,38 +320,40 @@
       margin-bottom: 36px;
     }
     .service-card {
-      background: var(--white);
-      border: 1px solid #dde6f5;
-      border-radius: 14px;
+      background: var(--off-white);
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
       padding: 32px 28px;
       display: flex;
       flex-direction: column;
-      transition: box-shadow 0.2s, transform 0.2s;
+      transition: box-shadow 0.2s, transform 0.2s, border-color 0.2s;
     }
     .service-card:hover {
       box-shadow: var(--shadow);
       transform: translateY(-3px);
+      border-color: rgba(45,140,255,0.35);
     }
     .service-icon {
-      width: 52px; height: 52px;
-      border-radius: 12px;
+      width: 50px;
+      height: 50px;
+      border-radius: 11px;
       background: rgba(45,140,255,0.1);
-      border: 1px solid rgba(45,140,255,0.2);
+      border: 1px solid rgba(45,140,255,0.22);
       display: flex;
       align-items: center;
       justify-content: center;
-      font-size: 1.4rem;
+      font-size: 1.35rem;
       margin-bottom: 18px;
       flex-shrink: 0;
     }
     .service-name {
-      font-size: 1.1rem;
+      font-size: 1.08rem;
       font-weight: 800;
       color: var(--navy);
       margin-bottom: 5px;
     }
     .service-tagline {
-      font-size: 0.88rem;
+      font-size: 0.87rem;
       color: var(--accent);
       font-weight: 600;
       margin-bottom: 16px;
@@ -420,14 +372,16 @@
       gap: 8px;
       font-size: 0.87rem;
       color: #4a5e8a;
+      line-height: 1.5;
     }
     .service-bullets li::before {
       content: '✓';
-      width: 17px; height: 17px;
+      width: 17px;
+      height: 17px;
       background: rgba(45,140,255,0.12);
       border-radius: 50%;
       color: var(--accent);
-      font-size: 0.6rem;
+      font-size: 0.58rem;
       font-weight: 900;
       display: flex;
       align-items: center;
@@ -435,47 +389,107 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-    .service-price {
-      font-size: 0.85rem;
+    .service-from {
+      font-size: 0.84rem;
       color: #6b7fa3;
       margin-bottom: 18px;
     }
-    .service-price strong {
+    .service-from strong {
       color: var(--navy);
       font-size: 1rem;
       font-weight: 800;
     }
-    .service-card .btn { font-size: 0.88rem; padding: 11px 20px; text-align: center; }
+    .service-card .btn {
+      font-size: 0.87rem;
+      padding: 11px 20px;
+      text-align: center;
+    }
+
+    /* Bundle Strip */
     .bundle-strip {
       background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
-      border-radius: 14px;
-      padding: 36px 40px;
+      border-radius: var(--radius-lg);
+      padding: 38px 44px;
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 24px;
+      gap: 28px;
       flex-wrap: wrap;
+      border: 1px solid rgba(45,140,255,0.2);
     }
-    .bundle-strip-text h3 {
+    .bundle-text h3 {
       color: var(--white);
-      font-size: 1.15rem;
+      font-size: 1.18rem;
       font-weight: 800;
       margin-bottom: 8px;
+      line-height: 1.3;
     }
-    .bundle-strip-text p {
+    .bundle-text p {
       color: var(--text-muted);
-      font-size: 0.91rem;
-      max-width: 500px;
-      line-height: 1.6;
+      font-size: 0.9rem;
+      max-width: 540px;
+      line-height: 1.65;
     }
     .bundle-strip .btn { white-space: nowrap; flex-shrink: 0; }
 
-    /* ── COMPARISON TABLE ── */
+    /* ══════════════════════════════════════
+       5. HOW IT WORKS
+    ══════════════════════════════════════ */
+    #how {
+      padding: 90px 24px;
+      background: var(--navy);
+    }
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      position: relative;
+    }
+    .steps::before {
+      content: '';
+      position: absolute;
+      top: 38px;
+      left: calc(16.66% + 20px);
+      right: calc(16.66% + 20px);
+      height: 2px;
+      background: linear-gradient(90deg, var(--accent), transparent 50%, var(--accent));
+      opacity: 0.28;
+    }
+    .step {
+      background: rgba(255,255,255,0.05);
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 34px 24px;
+      text-align: center;
+    }
+    .step-num {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 1.3rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 0 auto 20px;
+    }
+    .step h3 {
+      color: var(--white);
+      font-size: 1.02rem;
+      font-weight: 700;
+      margin-bottom: 10px;
+    }
+    .step p { color: var(--text-muted); font-size: 0.89rem; line-height: 1.65; }
+
+    /* ══════════════════════════════════════
+       6. BEFORE VS. AFTER TABLE
+    ══════════════════════════════════════ */
     #comparison {
       padding: 90px 24px;
-      background: var(--white);
+      background: var(--off-white);
     }
-    .comp-header { text-align: center; margin-bottom: 48px; }
     .comp-table-wrap {
       overflow-x: auto;
       border-radius: 12px;
@@ -487,24 +501,26 @@
       background: var(--white);
       min-width: 580px;
     }
-    .comp-table th, .comp-table td {
-      padding: 15px 20px;
+    .comp-table th,
+    .comp-table td {
+      padding: 15px 22px;
       text-align: left;
       border-bottom: 1px solid #edf2fb;
-      font-size: 0.92rem;
+      font-size: 0.91rem;
     }
     .comp-table thead th {
       background: var(--navy);
       color: var(--white);
       font-weight: 700;
-      font-size: 0.83rem;
+      font-size: 0.82rem;
       letter-spacing: 0.03em;
+      border-bottom: none;
     }
-    .comp-table thead th:first-child { border-radius: 12px 0 0 0; }
-    .comp-table thead th:last-child  { border-radius: 0 12px 0 0; }
+    .comp-table thead th:first-child  { border-radius: 12px 0 0 0; }
+    .comp-table thead th:last-child   { border-radius: 0 12px 0 0; }
+    .comp-table tbody td:first-child  { font-weight: 600; color: var(--navy); }
     .comp-table tbody tr:last-child td { border-bottom: none; }
-    .comp-table tbody td:first-child { font-weight: 600; color: var(--navy); }
-    .comp-table .col-save {
+    .col-save {
       color: #16a34a;
       font-weight: 700;
       background: #f0fdf4;
@@ -513,52 +529,90 @@
       background: #15803d;
       color: var(--white);
     }
-    .comp-table .row-total td {
-      background: #f4f7ff;
+    .row-total td {
+      background: #f0f5ff;
       font-weight: 800;
-      font-size: 0.96rem;
+      font-size: 0.95rem;
       border-top: 2px solid #dde6f5;
     }
-    .comp-table .row-total .col-save {
+    .row-total .col-save {
       background: #dcfce7;
       color: #15803d;
     }
-
-    /* ── TESTIMONIAL ── */
-    #testimonial {
-      padding: 90px 24px;
-      background: var(--off-white);
+    .comp-note {
       text-align: center;
+      margin-top: 20px;
+      font-size: 0.84rem;
+      color: #6b7fa3;
+      font-style: italic;
+    }
+
+    /* ══════════════════════════════════════
+       7. TESTIMONIALS
+    ══════════════════════════════════════ */
+    #testimonials {
+      padding: 90px 24px;
+      background: var(--white);
+    }
+    .testimonials-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      align-items: start;
     }
     .quote-card {
-      max-width: 720px;
-      margin: 0 auto;
       background: var(--white);
-      border-radius: 14px;
-      padding: 48px 40px;
+      border: 1px solid var(--border-light);
+      border-radius: var(--radius-lg);
+      padding: 36px 32px;
       box-shadow: var(--shadow);
       position: relative;
     }
     .quote-card::before {
       content: '\201C';
       position: absolute;
-      top: -10px; left: 36px;
-      font-size: 6rem;
+      top: 4px;
+      left: 26px;
+      font-size: 5rem;
       color: var(--accent);
       line-height: 1;
-      opacity: 0.25;
+      opacity: 0.18;
       font-family: Georgia, serif;
+      pointer-events: none;
     }
+    .quote-card.ghost {
+      background: #f9fbff;
+      border: 2px dashed #dde6f5;
+      box-shadow: none;
+    }
+    .quote-card.ghost::before { opacity: 0.07; }
+    .ghost-label {
+      display: inline-block;
+      font-size: 0.67rem;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: 0.07em;
+      background: #edf2fb;
+      color: #8fa3c8;
+      border: 1px solid #dde6f5;
+      padding: 3px 10px;
+      border-radius: 50px;
+      margin-bottom: 16px;
+    }
+    .stars { color: #f5a623; font-size: 0.92rem; letter-spacing: 2px; margin-bottom: 14px; display: block; }
+    .stars.muted { color: #c8d8f0; }
     .quote-text {
-      font-size: 1.2rem;
+      font-size: 0.95rem;
       font-style: italic;
       color: #2a3550;
-      line-height: 1.7;
-      margin-bottom: 28px;
+      line-height: 1.75;
+      margin-bottom: 24px;
     }
-    .quote-author { display: flex; align-items: center; gap: 14px; justify-content: center; }
+    .quote-text.muted { color: #a0b3cc; }
+    .quote-author { display: flex; align-items: center; gap: 12px; }
     .avatar {
-      width: 52px; height: 52px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       background: linear-gradient(135deg, var(--accent), var(--navy-mid));
       display: flex;
@@ -566,29 +620,47 @@
       justify-content: center;
       color: var(--white);
       font-weight: 800;
-      font-size: 1.1rem;
+      font-size: 0.95rem;
+      flex-shrink: 0;
     }
-    .author-info { text-align: left; }
-    .author-name { font-weight: 700; color: var(--navy); }
-    .author-role { font-size: 0.85rem; color: #6b7fa3; }
-    .stars { color: #f5a623; font-size: 1rem; letter-spacing: 1px; margin-bottom: 6px; }
+    .avatar.muted {
+      background: linear-gradient(135deg, #c8d8f0, #dde6f5);
+      color: #8fa3c8;
+    }
+    .author-name { font-weight: 700; color: var(--navy); font-size: 0.88rem; }
+    .author-name.muted { color: #9aafcc; }
+    .author-role { font-size: 0.8rem; color: #6b7fa3; margin-top: 1px; }
 
-    /* ── PRICING ── */
+    /* ══════════════════════════════════════
+       8. PRICING
+    ══════════════════════════════════════ */
     #pricing {
       padding: 90px 24px;
       background: var(--navy);
       text-align: center;
     }
+    .pricing-bundles-label {
+      font-size: 1rem;
+      font-weight: 700;
+      color: var(--white);
+      margin: 36px 0 6px;
+    }
+    .pricing-bundles-note {
+      color: var(--text-muted);
+      font-size: 0.88rem;
+      margin-bottom: 0;
+    }
     .pricing-tiers {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 24px;
-      margin: 48px 0 60px;
+      margin: 28px 0 64px;
       text-align: left;
+      align-items: start;
     }
     .tier-card {
       background: rgba(255,255,255,0.06);
-      border: 1px solid rgba(255,255,255,0.12);
+      border: 1px solid var(--border);
       border-radius: 16px;
       padding: 36px 28px;
       position: relative;
@@ -601,23 +673,23 @@
       position: absolute;
       top: 0; left: 0; right: 0;
       height: 3px;
-      background: linear-gradient(90deg, rgba(45,140,255,0.5), transparent);
+      background: linear-gradient(90deg, rgba(45,140,255,0.45), transparent);
     }
     .tier-card.popular {
-      border-color: rgba(45,140,255,0.55);
-      background: rgba(45,140,255,0.09);
+      border-color: rgba(45,140,255,0.52);
+      background: rgba(45,140,255,0.08);
       transform: translateY(-10px);
-      box-shadow: 0 12px 48px rgba(45,140,255,0.28);
+      box-shadow: 0 14px 52px rgba(45,140,255,0.26);
     }
     .tier-card.popular::before {
       background: linear-gradient(90deg, var(--accent), #6db8ff);
     }
-    .tier-popular-badge {
+    .tier-badge {
       position: absolute;
       top: 18px; right: 18px;
       background: var(--accent);
       color: var(--white);
-      font-size: 0.67rem;
+      font-size: 0.65rem;
       font-weight: 700;
       letter-spacing: 0.09em;
       text-transform: uppercase;
@@ -628,24 +700,25 @@
       color: var(--white);
       font-size: 1.05rem;
       font-weight: 800;
-      margin-bottom: 5px;
+      margin-bottom: 4px;
+      padding-right: 70px;
     }
     .tier-setup {
       color: var(--text-muted);
-      font-size: 0.81rem;
-      margin-bottom: 16px;
+      font-size: 0.8rem;
+      margin-bottom: 18px;
     }
     .tier-price {
-      font-size: 2.5rem;
+      font-size: 2.6rem;
       font-weight: 900;
       color: var(--white);
       line-height: 1;
       margin-bottom: 4px;
     }
-    .tier-price sup { font-size: 1.15rem; vertical-align: top; margin-top: 6px; display: inline-block; }
-    .tier-price sub { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
-    .tier-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
-    .tier-features {
+    .tier-price sup  { font-size: 1.15rem; vertical-align: top; margin-top: 7px; display: inline-block; }
+    .tier-price sub  { font-size: 0.88rem; font-weight: 400; color: var(--text-muted); }
+    .tier-divider    { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .tier-features   {
       list-style: none;
       display: flex;
       flex-direction: column;
@@ -659,14 +732,16 @@
       gap: 8px;
       color: #c8d8f0;
       font-size: 0.86rem;
+      line-height: 1.45;
     }
     .tier-features li::before {
       content: '✓';
-      width: 18px; height: 18px;
+      width: 17px;
+      height: 17px;
       background: rgba(45,140,255,0.2);
       border-radius: 50%;
       color: var(--accent);
-      font-size: 0.62rem;
+      font-size: 0.58rem;
       font-weight: 900;
       display: flex;
       align-items: center;
@@ -674,37 +749,21 @@
       flex-shrink: 0;
       margin-top: 2px;
     }
-    .tier-card .btn { width: 100%; text-align: center; font-size: 0.93rem; padding: 14px; }
+    .tier-card .btn { width: 100%; text-align: center; font-size: 0.92rem; padding: 14px; }
 
-    /* ── À LA CARTE ── */
-    .alacarte-wrap {
-      max-width: 740px;
-      margin: 0 auto;
-    }
-    .alacarte-header {
-      text-align: center;
-      margin-bottom: 32px;
-      padding-top: 24px;
-      border-top: 1px solid var(--border);
-    }
-    .alacarte-header h3 {
-      color: var(--white);
-      font-size: 1.55rem;
-      font-weight: 800;
-      margin-bottom: 8px;
-    }
-    .alacarte-header p { color: var(--text-muted); font-size: 0.93rem; }
-    .alacarte-table {
-      width: 100%;
-      border-collapse: collapse;
-      margin-bottom: 20px;
-    }
+    /* À La Carte */
+    .alacarte-divider { border: none; border-top: 1px solid var(--border); margin: 0 0 52px; }
+    .alacarte-head    { text-align: center; margin-bottom: 32px; }
+    .alacarte-head h3 { color: var(--white); font-size: 1.55rem; font-weight: 800; margin-bottom: 8px; }
+    .alacarte-head p  { color: var(--text-muted); font-size: 0.91rem; }
+    .alacarte-wrap    { max-width: 700px; margin: 0 auto; }
+    .alacarte-table   { width: 100%; border-collapse: collapse; margin-bottom: 20px; }
     .alacarte-table th {
       text-align: left;
       color: var(--text-muted);
-      font-size: 0.76rem;
+      font-size: 0.74rem;
       font-weight: 700;
-      letter-spacing: 0.1em;
+      letter-spacing: 0.11em;
       text-transform: uppercase;
       padding: 10px 16px;
       border-bottom: 1px solid var(--border);
@@ -713,94 +772,30 @@
       padding: 13px 16px;
       border-bottom: 1px solid rgba(255,255,255,0.06);
       color: #c8d8f0;
-      font-size: 0.91rem;
+      font-size: 0.9rem;
     }
     .alacarte-table td:first-child { font-weight: 700; color: var(--white); }
     .alacarte-table tbody tr:last-child td { border-bottom: none; }
-    .alacarte-note {
-      text-align: center;
-      color: var(--text-muted);
-      font-size: 0.86rem;
-      margin-bottom: 20px;
-    }
-    .alacarte-cta { text-align: center; }
+    .alacarte-note { text-align: center; color: var(--text-muted); font-size: 0.85rem; margin-bottom: 22px; }
+    .alacarte-cta  { text-align: center; }
 
-    /* ── LEGACY single pricing-card (kept for compatibility) ── */
-    .pricing-card {
-      max-width: 480px;
-      margin: 48px auto 0;
-      background: rgba(255,255,255,0.07);
-      border: 1px solid rgba(45,140,255,0.4);
-      border-radius: 16px;
-      padding: 44px 40px;
-      position: relative;
-      overflow: hidden;
-    }
-    .pricing-card::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0; right: 0;
-      height: 4px;
-      background: linear-gradient(90deg, var(--accent), #6db8ff);
-    }
-    .pricing-badge {
-      display: inline-block;
-      background: var(--accent);
-      color: var(--white);
-      font-size: 0.72rem;
-      font-weight: 700;
-      letter-spacing: 0.1em;
-      text-transform: uppercase;
-      padding: 4px 12px;
-      border-radius: 50px;
-      margin-bottom: 20px;
-    }
-    .pricing-plan { color: var(--white); font-size: 1.15rem; font-weight: 700; margin-bottom: 8px; }
-    .pricing-price {
-      font-size: 3.2rem;
-      font-weight: 900;
-      color: var(--white);
-      line-height: 1;
-      margin-bottom: 6px;
-    }
-    .pricing-price sup { font-size: 1.4rem; vertical-align: top; margin-top: 10px; display: inline-block; }
-    .pricing-price sub { font-size: 1rem; font-weight: 400; color: var(--text-muted); }
-    .pricing-note { color: var(--text-muted); font-size: 0.85rem; margin-bottom: 28px; }
-    .pricing-divider { border: none; border-top: 1px solid var(--border); margin: 24px 0; }
-    .feature-list { list-style: none; text-align: left; display: flex; flex-direction: column; gap: 12px; margin-bottom: 32px; }
-    .feature-list li {
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      color: #c8d8f0;
-      font-size: 0.93rem;
-    }
-    .feature-list li::before {
-      content: '✓';
-      width: 20px; height: 20px;
-      background: rgba(45,140,255,0.2);
-      border-radius: 50%;
-      color: var(--accent);
-      font-size: 0.7rem;
-      font-weight: 900;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      flex-shrink: 0;
-    }
-    .pricing-card .btn { width: 100%; text-align: center; font-size: 1rem; padding: 16px; }
-    .pricing-guarantee { margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); }
-
-    /* ── FAQ ── */
+    /* ══════════════════════════════════════
+       9. FAQ
+    ══════════════════════════════════════ */
     #faq {
       padding: 90px 24px;
       background: var(--off-white);
     }
-    .faq-header { text-align: center; margin-bottom: 48px; }
-    .faq-list { max-width: 720px; margin: 0 auto; display: flex; flex-direction: column; gap: 12px; }
+    .faq-list {
+      max-width: 720px;
+      margin: 0 auto;
+      display: flex;
+      flex-direction: column;
+      gap: 12px;
+    }
     .faq-item {
       background: var(--white);
-      border: 1px solid #dde6f5;
+      border: 1px solid var(--border-light);
       border-radius: var(--radius);
       overflow: hidden;
     }
@@ -810,7 +805,7 @@
       border: none;
       text-align: left;
       padding: 20px 24px;
-      font-size: 0.98rem;
+      font-size: 0.97rem;
       font-weight: 700;
       color: var(--navy);
       cursor: pointer;
@@ -822,10 +817,11 @@
     }
     .faq-question:hover { background: #f0f5ff; }
     .faq-icon {
-      width: 24px; height: 24px;
+      width: 24px;
+      height: 24px;
       border-radius: 50%;
       background: var(--off-white);
-      border: 1px solid #dde6f5;
+      border: 1px solid var(--border-light);
       display: flex;
       align-items: center;
       justify-content: center;
@@ -834,70 +830,98 @@
       color: var(--accent);
       transition: transform 0.25s, background 0.2s;
     }
-    .faq-item.open .faq-icon { transform: rotate(45deg); background: var(--accent); color: var(--white); border-color: var(--accent); }
+    .faq-item.open .faq-icon  { transform: rotate(45deg); background: var(--accent); color: var(--white); border-color: var(--accent); }
     .faq-answer {
       max-height: 0;
       overflow: hidden;
       transition: max-height 0.35s ease, padding 0.25s;
       padding: 0 24px;
-      font-size: 0.93rem;
+      font-size: 0.92rem;
       color: #4a5e8a;
-      line-height: 1.7;
+      line-height: 1.72;
     }
     .faq-item.open .faq-answer { max-height: 400px; padding: 0 24px 20px; }
 
-    /* ── FOOTER ── */
+    /* ══════════════════════════════════════
+       10. FOOTER
+    ══════════════════════════════════════ */
     footer {
       background: var(--navy);
       border-top: 1px solid var(--border);
-      padding: 48px 24px;
+      padding: 56px 24px 40px;
       text-align: center;
     }
     .footer-logo {
-      font-size: 1.3rem;
+      font-size: 1.28rem;
       font-weight: 800;
       color: var(--white);
-      margin-bottom: 8px;
+      margin-bottom: 5px;
     }
     .footer-logo span { color: var(--accent); }
-    .footer-tagline { color: var(--text-muted); font-size: 0.9rem; margin-bottom: 6px; }
-    .footer-location { color: #5a7098; font-size: 0.82rem; }
-    .footer-divider { border: none; border-top: 1px solid var(--border); margin: 24px auto; max-width: 200px; }
-    .footer-copy { color: #3a4e6a; font-size: 0.78rem; }
+    .footer-tagline   { color: var(--text-muted); font-size: 0.86rem; margin-bottom: 28px; }
+    .footer-nav {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-wrap: wrap;
+      gap: 6px 22px;
+      margin-bottom: 24px;
+    }
+    .footer-nav a       { color: #4d6580; text-decoration: none; font-size: 0.84rem; transition: color 0.15s; }
+    .footer-nav a:hover { color: var(--text-muted); }
+    .footer-nav .f-cta  { color: var(--accent); font-weight: 600; }
+    .footer-nav .f-cta:hover { color: #6db8ff; }
+    .footer-divider     { border: none; border-top: 1px solid var(--border); margin: 20px auto; max-width: 200px; }
+    .footer-location    { color: #3a4e6a; font-size: 0.81rem; margin-bottom: 4px; }
+    .footer-copy        { color: #3a4e6a; font-size: 0.77rem; }
 
-    /* ── RESPONSIVE ── */
-    @media (max-width: 900px) {
-      .pricing-tiers { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
-      .tier-card.popular { transform: none; }
+    /* ══════════════════════════════════════
+       RESPONSIVE
+    ══════════════════════════════════════ */
+    @media (max-width: 960px) {
+      .pricing-tiers          { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+      .tier-card.popular      { transform: none; }
     }
     @media (max-width: 768px) {
-      .stat-cards  { grid-template-columns: repeat(3, 1fr); gap: 10px; }
-      .stat-card   { padding: 18px 12px; }
-      .stat-card .stat-value { font-size: 1.5rem; }
-      .ps-grid     { grid-template-columns: 1fr; }
-      .steps       { grid-template-columns: 1fr; }
-      .steps::before { display: none; }
-      .services-grid { grid-template-columns: 1fr; }
-      .bundle-strip { flex-direction: column; text-align: center; }
-      .bundle-strip-text p { margin: 0 auto; }
+      .nav-links              { display: none; }
+      .stat-cards             { grid-template-columns: repeat(3, 1fr); gap: 10px; }
+      .stat-card              { padding: 18px 12px; }
+      .stat-value             { font-size: 1.55rem; }
+      .services-grid          { grid-template-columns: 1fr; }
+      .bundle-strip           { flex-direction: column; text-align: center; padding: 32px 28px; }
+      .bundle-text p          { margin: 0 auto; }
+      .bundle-strip .btn      { width: 100%; text-align: center; }
+      .steps                  { grid-template-columns: 1fr; }
+      .steps::before          { display: none; }
+      .testimonials-grid      { grid-template-columns: 1fr; }
+      .quote-card             { padding: 30px 24px; }
     }
     @media (max-width: 480px) {
-      .stat-cards { grid-template-columns: 1fr; }
-      .quote-card { padding: 36px 24px; }
-      .hero-ctas .btn { width: 100%; text-align: center; }
-      .bundle-strip { padding: 28px 24px; }
-      .tier-card { padding: 28px 22px; }
+      .stat-cards             { grid-template-columns: 1fr; }
+      .hero-ctas .btn         { width: 100%; text-align: center; }
+      #hero                   { padding: 72px 24px 64px; }
+      .tier-card              { padding: 28px 20px; }
     }
+
   </style>
 </head>
 <body>
 
 <!-- ══════════════════════════════════════
-     1. NAV
+     1. NAVBAR
 ══════════════════════════════════════ -->
 <nav>
   <div class="nav-inner">
-    <a href="#hero" class="nav-logo">Vasat<span>AI</span> Solutions</a>
+    <a href="#hero" class="nav-logo">
+      Vasat<span>AI</span> Solutions
+      <small>Voice · CRM · Web · Ads</small>
+    </a>
+    <div class="nav-links">
+      <a href="#services">Services</a>
+      <a href="#how">How It Works</a>
+      <a href="#pricing">Pricing</a>
+      <a href="#faq">FAQ</a>
+    </div>
     <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Call</a>
   </div>
 </nav>
@@ -907,10 +931,9 @@
 ══════════════════════════════════════ -->
 <section id="hero">
   <div class="container">
-    <div class="hero-badge">AI Growth Systems for Home Service Contractors</div>
-    <h1>Stop Losing Jobs to<br><em>Missed Calls &amp; Slow Follow-Up</em></h1>
-    <p class="hero-sub1">Our AI voice agent calls every new lead within 60 seconds — day or night — so you book more jobs without hiring extra staff.</p>
-    <p class="hero-sub2">Whether you need one thing fixed or a complete growth system built — we tailor every solution to your business. Pick one service or stack them all.</p>
+    <div class="hero-badge">Full Stack AI Solutions — Voice, CRM, Web &amp; Ads</div>
+    <h1>Stop Losing Jobs to<br><em>Missed Calls, Wasted Ad Spend<br>&amp; Slow Follow-Up</em></h1>
+    <p class="hero-sub">Vasatai builds and manages your complete growth system — AI voice agent, custom CRM, local website, and Meta ads. Use one service or deploy the full stack. Every solution is tailored to your business.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Strategy Call</a>
       <a href="#how" class="btn btn-outline">See How It Works</a>
@@ -921,8 +944,8 @@
         <span class="stat-label">Average response time to new leads</span>
       </div>
       <div class="stat-card">
-        <span class="stat-value">3×</span>
-        <span class="stat-label">More bookings from existing traffic</span>
+        <span class="stat-value">70%</span>
+        <span class="stat-label">Average reduction in cost per lead</span>
       </div>
       <div class="stat-card">
         <span class="stat-value">24/7</span>
@@ -933,120 +956,73 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     3. PROBLEM / SOLUTION
+     3. PROBLEM — THE COSTLY CYCLE
 ══════════════════════════════════════ -->
 <section id="problem">
   <div class="container">
-    <div class="ps-header">
+    <div class="section-header">
       <span class="section-label">The Real Problem</span>
-      <h2 class="section-title">Every Missed Call Is a Job Going to Your Competitor</h2>
-      <p class="section-subtitle" style="text-align:center; margin:12px auto 0; max-width:100%; width:100%;">Home service contractors lose thousands of dollars every week because of the same avoidable problems.</p>
-    </div>
-    <div class="ps-grid">
-      <!-- Pain -->
-      <div class="ps-col pain">
-        <h3>❌ Without Vasat AI</h3>
-        <ul class="ps-list">
-          <li><span class="icon">✕</span>Leads call, get voicemail, and hire someone else in minutes</li>
-          <li><span class="icon">✕</span>Your team can't follow up while they're on a job</li>
-          <li><span class="icon">✕</span>After-hours and weekend calls go completely unanswered</li>
-          <li><span class="icon">✕</span>Inconsistent follow-up means slow revenue growth</li>
-          <li><span class="icon">✕</span>Hiring a receptionist costs $3,000–$5,000/month</li>
-        </ul>
-      </div>
-      <!-- Fix -->
-      <div class="ps-col fix">
-        <h3>✅ With Vasat AI</h3>
-        <ul class="ps-list">
-          <li><span class="icon">✓</span>AI calls every new lead within 60 seconds — automatically</li>
-          <li><span class="icon">✓</span>Qualifies the job, books the appointment, sends confirmation</li>
-          <li><span class="icon">✓</span>Works 24/7 — never sick, never on another call</li>
-          <li><span class="icon">✓</span>Consistent, professional follow-up on every single lead</li>
-          <li><span class="icon">✓</span>Fraction of the cost of a full-time front-desk hire</li>
-        </ul>
-      </div>
+      <h2 class="section-title">The Costly Cycle Most Shops Are Stuck In</h2>
+      <p class="section-subtitle">If you're relying on Google LSA and a dispatcher, you're likely spending $4,000–$4,800 every single month just to keep the phone ringing.</p>
     </div>
 
-    <!-- Cost Cycle -->
     <div class="cost-cycle-wrap">
-      <div class="cost-cycle-label">The Painful Monthly Spend Loop Most Contractors Are Stuck In</div>
-      <div class="cost-cycle">
-        <div class="cc-step">
-          <div class="cc-bullet">1</div>
-          <span>Paying <strong>$100–120 per lead</strong> on Google LSA — every single month</span>
-        </div>
-        <div class="cc-arrow">↓</div>
-        <div class="cc-step">
-          <div class="cc-bullet">2</div>
-          <span>Paying <strong>$2,500–4,000/mo</strong> for a dispatcher or receptionist to handle calls</span>
-        </div>
-        <div class="cc-arrow">↓</div>
-        <div class="cc-step">
-          <div class="cc-bullet">3</div>
-          <span>Leads still <strong>fall through after hours and on weekends</strong> — no one picks up</span>
-        </div>
-        <div class="cc-arrow">↓</div>
-        <div class="cc-step">
-          <div class="cc-bullet">4</div>
-          <span><strong>No follow-up system</strong> — lost revenue and zero re-marketing to past customers</span>
-        </div>
-        <div class="cc-arrow">↓</div>
-        <div class="cc-step">
-          <div class="cc-bullet">5</div>
-          <span>Back to paying Google for more leads — <strong>the cycle repeats</strong></span>
-        </div>
-        <div class="cc-arrow">↓</div>
-        <div class="cc-total">Total monthly cost of this cycle: <span style="font-size:1.15rem;">$4,000–$4,800+</span></div>
+
+      <div class="cc-step">
+        <div class="cc-num">1</div>
+        <span>Pay Google LSA <strong>$100–120 per lead</strong> — every single month, no guarantees</span>
       </div>
+      <div class="cc-arrow">↓</div>
+
+      <div class="cc-step">
+        <div class="cc-num">2</div>
+        <span>Dispatcher answers calls — <strong>$2,500–4,000/mo salary</strong>, benefits not included</span>
+      </div>
+      <div class="cc-arrow">↓</div>
+
+      <div class="cc-step">
+        <div class="cc-num">3</div>
+        <span>Leads still <strong>fall through the cracks</strong> — after hours, weekends, and busy times</span>
+      </div>
+      <div class="cc-arrow">↓</div>
+
+      <div class="cc-step">
+        <div class="cc-num">4</div>
+        <span><strong>No follow-up system</strong> — lost revenue, zero re-marketing to past customers</span>
+      </div>
+      <div class="cc-arrow">↓</div>
+
+      <div class="cc-step">
+        <div class="cc-num">5</div>
+        <span>Back to paying Google for more leads — <strong>the cycle repeats every month</strong></span>
+      </div>
+      <div class="cc-arrow">↓</div>
+
+      <div class="cc-total">
+        Total Monthly Cost of This Cycle
+        <span class="cc-total-amount">$4,000–$4,800+</span>
+      </div>
+
     </div>
 
+    <p class="problem-closer">There's a better way — and it <em>costs less than one of those steps alone.</em></p>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     4. HOW IT WORKS
-══════════════════════════════════════ -->
-<section id="how">
-  <div class="container">
-    <div class="ps-header">
-      <span class="section-label">How It Works</span>
-      <h2 class="section-title light">Up and Running in 3 Simple Steps</h2>
-      <p class="section-subtitle light">No technical skills required. We handle the entire setup for you.</p>
-    </div>
-    <div class="steps">
-      <div class="step">
-        <div class="step-num">1</div>
-        <h3>We Build Your AI Agent</h3>
-        <p>We train a custom voice agent on your business — your services, pricing, availability, and how you like to sound on the phone.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">2</div>
-        <h3>Connect Your Lead Sources</h3>
-        <p>We plug your AI agent into your website, Google Ads, Angi, Thumbtack, or any lead source you use — zero downtime.</p>
-      </div>
-      <div class="step">
-        <div class="step-num">3</div>
-        <h3>Watch the Bookings Roll In</h3>
-        <p>Every new lead gets an instant call. Qualified jobs land on your calendar automatically. You just show up and do the work.</p>
-      </div>
-    </div>
-  </div>
-</section>
-
-<!-- ══════════════════════════════════════
-     5. SERVICES
+     4. SERVICES
 ══════════════════════════════════════ -->
 <section id="services">
   <div class="container">
-    <div class="services-header">
+    <div class="section-header">
       <span class="section-label">Our Services</span>
       <h2 class="section-title">Our Services — Your Way</h2>
-      <p class="section-subtitle" style="margin: 12px auto 0; text-align: center; max-width: 620px;">Use one service. Combine two. Or deploy the full stack. Every engagement is scoped to what your business actually needs.</p>
+      <p class="section-subtitle">Use one service. Combine two. Or deploy the full stack. Every engagement is scoped to what your business actually needs.</p>
     </div>
 
     <div class="services-grid">
 
-      <!-- Card 1: AI Voice Agent -->
+      <!-- Card 1 — AI Voice Agent -->
       <div class="service-card">
         <div class="service-icon">🎙️</div>
         <div class="service-name">AI Voice Agent</div>
@@ -1054,15 +1030,15 @@
         <ul class="service-bullets">
           <li>24/7 inbound call answering</li>
           <li>Lead qualification (service type, issue, location)</li>
-          <li>Automatic appointment booking</li>
+          <li>Automatic appointment booking into your calendar</li>
           <li>Missed call text follow-up within 5 minutes</li>
           <li>Eliminates dispatcher cost for routine calls</li>
         </ul>
-        <div class="service-price">Starting from: <strong>$597/mo</strong></div>
+        <div class="service-from">Starting from: <strong>$597/mo</strong></div>
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
       </div>
 
-      <!-- Card 2: Custom CRM -->
+      <!-- Card 2 — Custom CRM -->
       <div class="service-card">
         <div class="service-icon">📋</div>
         <div class="service-name">Custom CRM Platform</div>
@@ -1073,11 +1049,11 @@
           <li>Automated text + email follow-up sequences</li>
           <li>Customer history and repeat booking triggers</li>
         </ul>
-        <div class="service-price">Starting from: <strong>$297/mo</strong></div>
+        <div class="service-from">Starting from: <strong>$297/mo</strong></div>
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
       </div>
 
-      <!-- Card 3: Website -->
+      <!-- Card 3 — Website -->
       <div class="service-card">
         <div class="service-icon">💻</div>
         <div class="service-name">Local Service Website</div>
@@ -1089,22 +1065,22 @@
           <li>Review showcase to build instant trust</li>
           <li>Reduces Google ad dependency over time</li>
         </ul>
-        <div class="service-price">Starting from: <strong>$397/mo</strong></div>
+        <div class="service-from">Starting from: <strong>$397/mo</strong></div>
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
       </div>
 
-      <!-- Card 4: Meta Ads -->
+      <!-- Card 4 — Meta Ads -->
       <div class="service-card">
         <div class="service-icon">🎯</div>
         <div class="service-name">Meta AI Ad Management</div>
         <div class="service-tagline">Leads at $15–40 instead of $100–120.</div>
         <ul class="service-bullets">
-          <li>Facebook + Instagram campaigns for homeowners</li>
-          <li>Meta Advantage+ AI targeting</li>
-          <li>AI-generated ad creatives and copy variations</li>
+          <li>Facebook + Instagram campaigns targeting homeowners</li>
+          <li>Meta Advantage+ AI targeting finds buyers automatically</li>
+          <li>AI-generated ad creatives, copy, and variations</li>
           <li>Monthly performance reports with full transparency</li>
         </ul>
-        <div class="service-price">Starting from: <strong>$397/mo</strong></div>
+        <div class="service-from">Starting from: <strong>$397/mo</strong></div>
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
       </div>
 
@@ -1112,9 +1088,9 @@
 
     <!-- Bundle Strip -->
     <div class="bundle-strip">
-      <div class="bundle-strip-text">
-        <h3>Want it all? The Full Stack Bundle.</h3>
-        <p>All four services — deeply integrated and managed as one system. Each piece makes the others more effective. This is where the biggest ROI lives.</p>
+      <div class="bundle-text">
+        <h3>Want it all working together? The Full Stack Bundle.</h3>
+        <p>Integrates all four services into one seamless growth system — managed for you, end to end. Leads come in, AI answers, CRM tracks, and ads run. Each piece makes the others more effective.</p>
       </div>
       <a href="#pricing" class="btn btn-primary">See Full Stack Pricing</a>
     </div>
@@ -1123,14 +1099,44 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     6. BEFORE VS. AFTER COMPARISON
+     5. HOW IT WORKS
+══════════════════════════════════════ -->
+<section id="how">
+  <div class="container">
+    <div class="section-header">
+      <span class="section-label">How It Works</span>
+      <h2 class="section-title light">Up and Running in 3 Simple Steps</h2>
+      <p class="section-subtitle light">Whether you're starting with one service or the full stack — our onboarding is fast, handled for you, and live within a week.</p>
+    </div>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">1</div>
+        <h3>We Scope Your Solution</h3>
+        <p>We start with a free strategy call to understand your business — your lead sources, current costs, and biggest gaps. We recommend exactly which services will move the needle for you, whether that's one or all four.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">2</div>
+        <h3>We Build &amp; Integrate Everything</h3>
+        <p>Our team builds your AI voice agent, CRM, website, and/or ad campaigns — all configured to your business, your market, and your calendar. You don't touch a single technical setting.</p>
+      </div>
+      <div class="step">
+        <div class="step-num">3</div>
+        <h3>You Go Live &amp; We Manage It</h3>
+        <p>Your system goes live within 5–7 business days. Leads come in, AI answers, CRM tracks, and ads run — all managed by Vasatai. You just show up and do the work.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     6. BEFORE VS. AFTER TABLE
 ══════════════════════════════════════ -->
 <section id="comparison">
   <div class="container">
-    <div class="comp-header">
+    <div class="section-header">
       <span class="section-label">The Math</span>
       <h2 class="section-title">Before vs. After Vasatai</h2>
-      <p class="section-subtitle" style="margin: 12px auto 0; text-align: center;">See exactly what the current system costs — and what you actually save.</p>
+      <p class="section-subtitle">Here's what the numbers look like when you replace the old cycle with the full stack system.</p>
     </div>
     <div class="comp-table-wrap">
       <table class="comp-table">
@@ -1145,18 +1151,18 @@
         <tbody>
           <tr>
             <td>Monthly lead cost</td>
-            <td>$1,500 <span style="font-size:0.82rem;color:#6b7fa3;">(15 leads @ $100–120)</span></td>
-            <td>$300 <span style="font-size:0.82rem;color:#6b7fa3;">(Meta ad spend)</span></td>
+            <td>$1,500 <span style="font-size:.82rem;color:#6b7fa3;">(15 leads @ $100–120)</span></td>
+            <td>$300 <span style="font-size:.82rem;color:#6b7fa3;">(Meta ad spend)</span></td>
             <td class="col-save">$1,200</td>
           </tr>
           <tr>
             <td>Dispatcher / receptionist</td>
             <td>$2,500–3,000/mo</td>
-            <td>$0 <span style="font-size:0.82rem;color:#6b7fa3;">(AI handles it)</span></td>
+            <td>$0 <span style="font-size:.82rem;color:#6b7fa3;">(AI handles it)</span></td>
             <td class="col-save">$2,500+</td>
           </tr>
           <tr>
-            <td>Website + CRM</td>
+            <td>Website + CRM tools</td>
             <td>$200–300/mo</td>
             <td>Included</td>
             <td class="col-save">$200+</td>
@@ -1176,27 +1182,62 @@
         </tbody>
       </table>
     </div>
+    <p class="comp-note">Individual service clients see proportional savings based on which services they adopt.</p>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     7. TESTIMONIAL
+     7. TESTIMONIALS
 ══════════════════════════════════════ -->
-<section id="testimonial">
+<section id="testimonials">
   <div class="container">
-    <span class="section-label">Real Results</span>
-    <div class="quote-card">
-      <div class="stars">★★★★★</div>
-      <p class="quote-text">
-        "I was skeptical at first — I didn't think a robot could represent my HVAC business. But the AI sounds so natural that customers can't tell the difference. Within the first 30 days we booked 14 extra jobs we would have missed. It's paid for itself ten times over."
-      </p>
-      <div class="quote-author">
-        <div class="avatar">MR</div>
-        <div class="author-info">
-          <div class="author-name">Marcus R.</div>
-          <div class="author-role">Owner, Premier HVAC Services — Houston, TX</div>
+    <div class="section-header">
+      <span class="section-label">Real Results</span>
+      <h2 class="section-title">Real Results from Real Contractors</h2>
+    </div>
+    <div class="testimonials-grid">
+
+      <!-- Card 1 — Live testimonial -->
+      <div class="quote-card">
+        <span class="stars">★★★★★</span>
+        <p class="quote-text">"I was skeptical at first — I didn't think a robot could represent my HVAC business. But the AI sounds so natural that customers can't tell the difference. Within the first 30 days we booked 14 extra jobs we would have missed. It's paid for itself ten times over."</p>
+        <div class="quote-author">
+          <div class="avatar">MR</div>
+          <div>
+            <div class="author-name">Marcus R.</div>
+            <div class="author-role">Owner, Premier HVAC Services — Houston, TX</div>
+          </div>
         </div>
       </div>
+
+      <!-- Card 2 — Ghost placeholder -->
+      <div class="quote-card ghost">
+        <div class="ghost-label">Spot reserved for a founding client</div>
+        <span class="stars muted">★★★★★</span>
+        <p class="quote-text muted">"[Your review here — results coming soon]"</p>
+        <div class="quote-author">
+          <div class="avatar muted">?</div>
+          <div>
+            <div class="author-name muted">Home Service Contractor</div>
+            <div class="author-role">Houston, TX</div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Card 3 — Ghost placeholder -->
+      <div class="quote-card ghost">
+        <div class="ghost-label">Spot reserved for a founding client</div>
+        <span class="stars muted">★★★★★</span>
+        <p class="quote-text muted">"[Your review here — results coming soon]"</p>
+        <div class="quote-author">
+          <div class="avatar muted">?</div>
+          <div>
+            <div class="author-name muted">Home Service Contractor</div>
+            <div class="author-role">Houston, TX</div>
+          </div>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
@@ -1206,16 +1247,22 @@
 ══════════════════════════════════════ -->
 <section id="pricing">
   <div class="container">
-    <span class="section-label">Pricing</span>
-    <h2 class="section-title light">Full Stack Bundles — Everything Integrated</h2>
-    <p class="section-subtitle light" style="margin:12px auto 0; text-align:center;">Best value when you want the complete system working together.</p>
+
+    <div class="section-header">
+      <span class="section-label">Pricing</span>
+      <h2 class="section-title light">Simple, Transparent Pricing</h2>
+      <p class="section-subtitle light">Start with what you need. Add more when you're ready.</p>
+    </div>
+
+    <p class="pricing-bundles-label">Full Stack Bundles — Best Value When You Want the Complete System</p>
+    <p class="pricing-bundles-note">All four services integrated and managed together — the highest ROI option.</p>
 
     <div class="pricing-tiers">
 
-      <!-- Tier 1: Essential Starter -->
+      <!-- Tier 1 — Essential Starter -->
       <div class="tier-card">
         <div class="tier-name">Essential Starter</div>
-        <div class="tier-setup">Setup fee: $1,497</div>
+        <div class="tier-setup">One-time setup: $1,497</div>
         <div class="tier-price"><sup>$</sup>597<sub>/mo</sub></div>
         <hr class="tier-divider" />
         <ul class="tier-features">
@@ -1230,11 +1277,11 @@
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-outline">Get Started</a>
       </div>
 
-      <!-- Tier 2: Growth (Most Popular) -->
+      <!-- Tier 2 — Growth (Most Popular) -->
       <div class="tier-card popular">
-        <div class="tier-popular-badge">Most Popular</div>
+        <div class="tier-badge">Most Popular</div>
         <div class="tier-name">Growth</div>
-        <div class="tier-setup">Setup fee: $2,497</div>
+        <div class="tier-setup">One-time setup: $2,497</div>
         <div class="tier-price"><sup>$</sup>997<sub>/mo</sub></div>
         <hr class="tier-divider" />
         <ul class="tier-features">
@@ -1250,10 +1297,10 @@
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Get Started</a>
       </div>
 
-      <!-- Tier 3: Elite -->
+      <!-- Tier 3 — Elite -->
       <div class="tier-card">
         <div class="tier-name">Elite</div>
-        <div class="tier-setup">Setup fee: $3,497</div>
+        <div class="tier-setup">One-time setup: $3,497</div>
         <div class="tier-price"><sup>$</sup>1,497<sub>/mo</sub></div>
         <hr class="tier-divider" />
         <ul class="tier-features">
@@ -1272,43 +1319,44 @@
     </div>
 
     <!-- À La Carte -->
+    <hr class="alacarte-divider" />
+    <div class="alacarte-head">
+      <h3>Just Need One Thing? Start There.</h3>
+      <p>Every service is available standalone — no package required.</p>
+    </div>
     <div class="alacarte-wrap">
-      <div class="alacarte-header">
-        <h3>Just Need One Thing? Start There.</h3>
-        <p>Every service is available standalone. No package required.</p>
-      </div>
       <table class="alacarte-table">
         <thead>
           <tr>
             <th>Service</th>
-            <th>Starting Price</th>
+            <th>Monthly</th>
             <th>Setup Fee</th>
           </tr>
         </thead>
         <tbody>
           <tr>
             <td>AI Voice Agent</td>
-            <td>$597/mo</td>
+            <td>From $597/mo</td>
             <td>$997</td>
           </tr>
           <tr>
             <td>Custom CRM</td>
-            <td>$297/mo</td>
+            <td>From $297/mo</td>
             <td>$497</td>
           </tr>
           <tr>
             <td>Local Service Website</td>
-            <td>$397/mo</td>
+            <td>From $397/mo</td>
             <td>$797</td>
           </tr>
           <tr>
             <td>Meta AI Ad Management</td>
-            <td>$397/mo</td>
+            <td>From $397/mo</td>
             <td>$497</td>
           </tr>
         </tbody>
       </table>
-      <p class="alacarte-note">Not sure what you need? Book a free strategy call and we'll scope the right solution for your business.</p>
+      <p class="alacarte-note">Not sure where to start? Book a free strategy call and we'll scope the right solution for your business.</p>
       <div class="alacarte-cta">
         <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Strategy Call</a>
       </div>
@@ -1322,51 +1370,11 @@
 ══════════════════════════════════════ -->
 <section id="faq">
   <div class="container">
-    <div class="faq-header">
+    <div class="section-header">
       <span class="section-label">FAQ</span>
       <h2 class="section-title">Common Questions</h2>
     </div>
     <div class="faq-list">
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Will my customers know they're talking to an AI?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Our AI agents are designed to sound natural and professional. Most customers simply experience a fast, friendly response. The agent focuses the conversation on booking the job — not on revealing what it is. That said, if a customer directly asks, the agent will be transparent.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          How long does it take to get set up?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Most contractors are live within 5–7 business days. We handle the entire setup, including training the agent on your services, integrating with your lead sources, and testing the call flow before we go live.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          Does it work with my current scheduling software?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Yes. We integrate with the most common tools used by home service contractors, including Google Calendar, Jobber, ServiceTitan, Housecall Pro, and more. If you're using something else, we'll scope the integration during your onboarding call.
-        </div>
-      </div>
-
-      <div class="faq-item">
-        <button class="faq-question" aria-expanded="false">
-          What kinds of contractors is this best suited for?
-          <span class="faq-icon">+</span>
-        </button>
-        <div class="faq-answer">
-          Vasat AI is built specifically for home service businesses — HVAC, plumbing, appliance repair, roofing, electrical, general contracting, and more. If your business depends on inbound leads and phone bookings, this system will work for you.
-        </div>
-      </div>
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
@@ -1380,11 +1388,51 @@
 
       <div class="faq-item">
         <button class="faq-question" aria-expanded="false">
+          Will my customers know they're talking to an AI?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Our AI agents are designed to sound natural and professional. Most customers simply experience a fast, friendly response. The agent focuses on booking the job — not revealing what it is. That said, if a customer directly asks, the agent will be transparent.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          How long does it take to get set up?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Most clients are live within 5–7 business days. We handle the entire setup — building your agent, configuring your CRM, launching your website and ads — and test everything before going live.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Does it work with my current scheduling software?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Yes. We integrate with Google Calendar, Jobber, ServiceTitan, Housecall Pro, and more. If you use something else, we'll scope the integration during your onboarding call.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What kinds of contractors is this best suited for?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          Vasatai is built for home service businesses — HVAC, plumbing, appliance repair, roofing, electrical, general contracting, and more. If your business depends on inbound leads and phone bookings, this system is built for you.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
           Do you only work with appliance repair companies?
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          No — Vasatai is built for all home service contractors. HVAC, plumbing, appliance repair, roofing, electrical, and general contracting are all a great fit. If your business depends on inbound leads and phone bookings, our system is designed for you.
+          No — we work with all home service contractors. Appliance repair is one of our core markets in Houston, but the system works for any business that books jobs over the phone or from inbound leads.
         </div>
       </div>
 
@@ -1394,7 +1442,7 @@
           <span class="faq-icon">+</span>
         </button>
         <div class="faq-answer">
-          The Full Stack combines our AI Voice Agent, Custom CRM, Local Website, and Meta Ad Management into one deeply integrated system. Leads come in through ads, get answered by AI, are tracked in the CRM, and followed up automatically. Each piece makes the others more effective. Individual services are great starting points — the full stack is where the biggest ROI lives.
+          The Full Stack combines all four services — AI Voice Agent, CRM, Website, and Meta Ads — into one integrated growth system. Leads come in through ads, get answered by AI, are tracked in the CRM, and followed up automatically. Each piece makes the others more effective. Individual services are a great starting point — the full stack is where the biggest ROI lives.
         </div>
       </div>
 
@@ -1407,28 +1455,31 @@
 ══════════════════════════════════════ -->
 <footer>
   <div class="footer-logo">Vasat<span>AI</span> Solutions</div>
-  <p class="footer-tagline">AI Voice Agents for Home Service Contractors</p>
-  <p class="footer-location">Houston, TX</p>
+  <p class="footer-tagline">Full Stack AI Solutions — Voice, CRM, Web &amp; Ads</p>
+  <nav class="footer-nav">
+    <a href="#services">Services</a>
+    <a href="#how">How It Works</a>
+    <a href="#pricing">Pricing</a>
+    <a href="#faq">FAQ</a>
+    <a href="https://calendly.com" target="_blank" rel="noopener" class="f-cta">Book a Call</a>
+  </nav>
+  <p class="footer-location">vasataisolutions.com &nbsp;·&nbsp; Houston, TX</p>
   <hr class="footer-divider" />
   <p class="footer-copy">&copy; 2026 Vasat AI Solutions. All rights reserved.</p>
 </footer>
 
 <!-- ══════════════════════════════════════
-     JS: FAQ Accordion
+     JS — FAQ Accordion
 ══════════════════════════════════════ -->
 <script>
   document.querySelectorAll('.faq-question').forEach(function(btn) {
     btn.addEventListener('click', function() {
       var item = this.closest('.faq-item');
       var isOpen = item.classList.contains('open');
-
-      // Close all open items
-      document.querySelectorAll('.faq-item.open').forEach(function(openItem) {
-        openItem.classList.remove('open');
-        openItem.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
+      document.querySelectorAll('.faq-item.open').forEach(function(o) {
+        o.classList.remove('open');
+        o.querySelector('.faq-question').setAttribute('aria-expanded', 'false');
       });
-
-      // Toggle clicked item
       if (!isOpen) {
         item.classList.add('open');
         this.setAttribute('aria-expanded', 'true');
