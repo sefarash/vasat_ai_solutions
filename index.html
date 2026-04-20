@@ -54,6 +54,12 @@
       border: 2px solid rgba(255,255,255,0.6);
     }
     .btn-outline:hover { background: rgba(255,255,255,0.1); border-color: var(--white); }
+    .btn-outline-dark {
+      background: transparent;
+      color: var(--navy);
+      border: 2px solid var(--navy);
+    }
+    .btn-outline-dark:hover { background: var(--navy); color: var(--white); }
     .section-label {
       display: inline-block;
       font-size: 0.75rem;
@@ -147,11 +153,19 @@
       font-style: normal;
       color: var(--accent);
     }
-    #hero p {
+    #hero .hero-sub1 {
       font-size: 1.15rem;
       color: #a8bfe0;
       max-width: 580px;
+      margin: 0 auto 14px;
+    }
+    #hero .hero-sub2 {
+      font-size: 0.93rem;
+      color: #7bb8ff;
+      max-width: 540px;
       margin: 0 auto 36px;
+      opacity: 0.9;
+      font-style: italic;
     }
     .hero-ctas {
       display: flex;
@@ -240,6 +254,67 @@
     .pain .icon { background: #ffcdd2; color: #c0392b; }
     .fix  .icon { background: #bdd9ff; color: #1a6fd4; }
 
+    /* ── COST CYCLE ── */
+    .cost-cycle-wrap {
+      margin: 52px auto 0;
+      max-width: 560px;
+    }
+    .cost-cycle-label {
+      text-align: center;
+      font-size: 0.8rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: #c0392b;
+      margin-bottom: 20px;
+    }
+    .cost-cycle {
+      display: flex;
+      flex-direction: column;
+      gap: 0;
+    }
+    .cc-step {
+      background: var(--white);
+      border: 1px solid #ffcdd2;
+      border-radius: var(--radius);
+      padding: 14px 20px;
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      font-size: 0.92rem;
+      color: #2a3550;
+      font-weight: 500;
+    }
+    .cc-bullet {
+      width: 30px; height: 30px;
+      border-radius: 50%;
+      background: #ffede8;
+      color: #c0392b;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.85rem;
+      flex-shrink: 0;
+    }
+    .cc-arrow {
+      text-align: center;
+      color: #e57373;
+      font-size: 1.3rem;
+      line-height: 1;
+      padding: 5px 0;
+      user-select: none;
+    }
+    .cc-total {
+      background: #fff0f0;
+      border: 2px solid #c0392b;
+      border-radius: var(--radius);
+      padding: 18px 24px;
+      text-align: center;
+      font-weight: 800;
+      color: #c0392b;
+      font-size: 1.05rem;
+    }
+
     /* ── HOW IT WORKS ── */
     #how {
       padding: 90px 24px;
@@ -281,6 +356,173 @@
     }
     .step h3 { color: var(--white); font-size: 1.05rem; font-weight: 700; margin-bottom: 10px; }
     .step p  { color: var(--text-muted); font-size: 0.9rem; }
+
+    /* ── SERVICES ── */
+    #services {
+      padding: 90px 24px;
+      background: var(--off-white);
+    }
+    .services-header { text-align: center; margin-bottom: 52px; }
+    .services-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 24px;
+      margin-bottom: 36px;
+    }
+    .service-card {
+      background: var(--white);
+      border: 1px solid #dde6f5;
+      border-radius: 14px;
+      padding: 32px 28px;
+      display: flex;
+      flex-direction: column;
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .service-card:hover {
+      box-shadow: var(--shadow);
+      transform: translateY(-3px);
+    }
+    .service-icon {
+      width: 52px; height: 52px;
+      border-radius: 12px;
+      background: rgba(45,140,255,0.1);
+      border: 1px solid rgba(45,140,255,0.2);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 1.4rem;
+      margin-bottom: 18px;
+      flex-shrink: 0;
+    }
+    .service-name {
+      font-size: 1.1rem;
+      font-weight: 800;
+      color: var(--navy);
+      margin-bottom: 5px;
+    }
+    .service-tagline {
+      font-size: 0.88rem;
+      color: var(--accent);
+      font-weight: 600;
+      margin-bottom: 16px;
+    }
+    .service-bullets {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 9px;
+      margin-bottom: 20px;
+      flex: 1;
+    }
+    .service-bullets li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      font-size: 0.87rem;
+      color: #4a5e8a;
+    }
+    .service-bullets li::before {
+      content: '✓';
+      width: 17px; height: 17px;
+      background: rgba(45,140,255,0.12);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 0.6rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .service-price {
+      font-size: 0.85rem;
+      color: #6b7fa3;
+      margin-bottom: 18px;
+    }
+    .service-price strong {
+      color: var(--navy);
+      font-size: 1rem;
+      font-weight: 800;
+    }
+    .service-card .btn { font-size: 0.88rem; padding: 11px 20px; text-align: center; }
+    .bundle-strip {
+      background: linear-gradient(135deg, var(--navy) 0%, var(--navy-light) 100%);
+      border-radius: 14px;
+      padding: 36px 40px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+      flex-wrap: wrap;
+    }
+    .bundle-strip-text h3 {
+      color: var(--white);
+      font-size: 1.15rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .bundle-strip-text p {
+      color: var(--text-muted);
+      font-size: 0.91rem;
+      max-width: 500px;
+      line-height: 1.6;
+    }
+    .bundle-strip .btn { white-space: nowrap; flex-shrink: 0; }
+
+    /* ── COMPARISON TABLE ── */
+    #comparison {
+      padding: 90px 24px;
+      background: var(--white);
+    }
+    .comp-header { text-align: center; margin-bottom: 48px; }
+    .comp-table-wrap {
+      overflow-x: auto;
+      border-radius: 12px;
+      box-shadow: var(--shadow);
+    }
+    .comp-table {
+      width: 100%;
+      border-collapse: collapse;
+      background: var(--white);
+      min-width: 580px;
+    }
+    .comp-table th, .comp-table td {
+      padding: 15px 20px;
+      text-align: left;
+      border-bottom: 1px solid #edf2fb;
+      font-size: 0.92rem;
+    }
+    .comp-table thead th {
+      background: var(--navy);
+      color: var(--white);
+      font-weight: 700;
+      font-size: 0.83rem;
+      letter-spacing: 0.03em;
+    }
+    .comp-table thead th:first-child { border-radius: 12px 0 0 0; }
+    .comp-table thead th:last-child  { border-radius: 0 12px 0 0; }
+    .comp-table tbody tr:last-child td { border-bottom: none; }
+    .comp-table tbody td:first-child { font-weight: 600; color: var(--navy); }
+    .comp-table .col-save {
+      color: #16a34a;
+      font-weight: 700;
+      background: #f0fdf4;
+    }
+    .comp-table thead th.col-save {
+      background: #15803d;
+      color: var(--white);
+    }
+    .comp-table .row-total td {
+      background: #f4f7ff;
+      font-weight: 800;
+      font-size: 0.96rem;
+      border-top: 2px solid #dde6f5;
+    }
+    .comp-table .row-total .col-save {
+      background: #dcfce7;
+      color: #15803d;
+    }
 
     /* ── TESTIMONIAL ── */
     #testimonial {
@@ -337,6 +579,153 @@
       background: var(--navy);
       text-align: center;
     }
+    .pricing-tiers {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 24px;
+      margin: 48px 0 60px;
+      text-align: left;
+    }
+    .tier-card {
+      background: rgba(255,255,255,0.06);
+      border: 1px solid rgba(255,255,255,0.12);
+      border-radius: 16px;
+      padding: 36px 28px;
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      flex-direction: column;
+    }
+    .tier-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0; right: 0;
+      height: 3px;
+      background: linear-gradient(90deg, rgba(45,140,255,0.5), transparent);
+    }
+    .tier-card.popular {
+      border-color: rgba(45,140,255,0.55);
+      background: rgba(45,140,255,0.09);
+      transform: translateY(-10px);
+      box-shadow: 0 12px 48px rgba(45,140,255,0.28);
+    }
+    .tier-card.popular::before {
+      background: linear-gradient(90deg, var(--accent), #6db8ff);
+    }
+    .tier-popular-badge {
+      position: absolute;
+      top: 18px; right: 18px;
+      background: var(--accent);
+      color: var(--white);
+      font-size: 0.67rem;
+      font-weight: 700;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      padding: 3px 10px;
+      border-radius: 50px;
+    }
+    .tier-name {
+      color: var(--white);
+      font-size: 1.05rem;
+      font-weight: 800;
+      margin-bottom: 5px;
+    }
+    .tier-setup {
+      color: var(--text-muted);
+      font-size: 0.81rem;
+      margin-bottom: 16px;
+    }
+    .tier-price {
+      font-size: 2.5rem;
+      font-weight: 900;
+      color: var(--white);
+      line-height: 1;
+      margin-bottom: 4px;
+    }
+    .tier-price sup { font-size: 1.15rem; vertical-align: top; margin-top: 6px; display: inline-block; }
+    .tier-price sub { font-size: 0.9rem; font-weight: 400; color: var(--text-muted); }
+    .tier-divider { border: none; border-top: 1px solid var(--border); margin: 20px 0; }
+    .tier-features {
+      list-style: none;
+      display: flex;
+      flex-direction: column;
+      gap: 10px;
+      margin-bottom: 28px;
+      flex: 1;
+    }
+    .tier-features li {
+      display: flex;
+      align-items: flex-start;
+      gap: 8px;
+      color: #c8d8f0;
+      font-size: 0.86rem;
+    }
+    .tier-features li::before {
+      content: '✓';
+      width: 18px; height: 18px;
+      background: rgba(45,140,255,0.2);
+      border-radius: 50%;
+      color: var(--accent);
+      font-size: 0.62rem;
+      font-weight: 900;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .tier-card .btn { width: 100%; text-align: center; font-size: 0.93rem; padding: 14px; }
+
+    /* ── À LA CARTE ── */
+    .alacarte-wrap {
+      max-width: 740px;
+      margin: 0 auto;
+    }
+    .alacarte-header {
+      text-align: center;
+      margin-bottom: 32px;
+      padding-top: 24px;
+      border-top: 1px solid var(--border);
+    }
+    .alacarte-header h3 {
+      color: var(--white);
+      font-size: 1.55rem;
+      font-weight: 800;
+      margin-bottom: 8px;
+    }
+    .alacarte-header p { color: var(--text-muted); font-size: 0.93rem; }
+    .alacarte-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-bottom: 20px;
+    }
+    .alacarte-table th {
+      text-align: left;
+      color: var(--text-muted);
+      font-size: 0.76rem;
+      font-weight: 700;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      padding: 10px 16px;
+      border-bottom: 1px solid var(--border);
+    }
+    .alacarte-table td {
+      padding: 13px 16px;
+      border-bottom: 1px solid rgba(255,255,255,0.06);
+      color: #c8d8f0;
+      font-size: 0.91rem;
+    }
+    .alacarte-table td:first-child { font-weight: 700; color: var(--white); }
+    .alacarte-table tbody tr:last-child td { border-bottom: none; }
+    .alacarte-note {
+      text-align: center;
+      color: var(--text-muted);
+      font-size: 0.86rem;
+      margin-bottom: 20px;
+    }
+    .alacarte-cta { text-align: center; }
+
+    /* ── LEGACY single pricing-card (kept for compatibility) ── */
     .pricing-card {
       max-width: 480px;
       margin: 48px auto 0;
@@ -400,11 +789,7 @@
       flex-shrink: 0;
     }
     .pricing-card .btn { width: 100%; text-align: center; font-size: 1rem; padding: 16px; }
-    .pricing-guarantee {
-      margin-top: 16px;
-      font-size: 0.8rem;
-      color: var(--text-muted);
-    }
+    .pricing-guarantee { margin-top: 16px; font-size: 0.8rem; color: var(--text-muted); }
 
     /* ── FAQ ── */
     #faq {
@@ -459,7 +844,7 @@
       color: #4a5e8a;
       line-height: 1.7;
     }
-    .faq-item.open .faq-answer { max-height: 200px; padding: 0 24px 20px; }
+    .faq-item.open .faq-answer { max-height: 400px; padding: 0 24px 20px; }
 
     /* ── FOOTER ── */
     footer {
@@ -481,6 +866,10 @@
     .footer-copy { color: #3a4e6a; font-size: 0.78rem; }
 
     /* ── RESPONSIVE ── */
+    @media (max-width: 900px) {
+      .pricing-tiers { grid-template-columns: 1fr; max-width: 440px; margin-left: auto; margin-right: auto; }
+      .tier-card.popular { transform: none; }
+    }
     @media (max-width: 768px) {
       .stat-cards  { grid-template-columns: repeat(3, 1fr); gap: 10px; }
       .stat-card   { padding: 18px 12px; }
@@ -488,12 +877,16 @@
       .ps-grid     { grid-template-columns: 1fr; }
       .steps       { grid-template-columns: 1fr; }
       .steps::before { display: none; }
-      .pricing-card { padding: 32px 24px; }
+      .services-grid { grid-template-columns: 1fr; }
+      .bundle-strip { flex-direction: column; text-align: center; }
+      .bundle-strip-text p { margin: 0 auto; }
     }
     @media (max-width: 480px) {
       .stat-cards { grid-template-columns: 1fr; }
       .quote-card { padding: 36px 24px; }
       .hero-ctas .btn { width: 100%; text-align: center; }
+      .bundle-strip { padding: 28px 24px; }
+      .tier-card { padding: 28px 22px; }
     }
   </style>
 </head>
@@ -514,9 +907,10 @@
 ══════════════════════════════════════ -->
 <section id="hero">
   <div class="container">
-    <div class="hero-badge">AI Voice Agents for Home Service Contractors</div>
+    <div class="hero-badge">AI Growth Systems for Home Service Contractors</div>
     <h1>Stop Losing Jobs to<br><em>Missed Calls &amp; Slow Follow-Up</em></h1>
-    <p>Our AI voice agent calls every new lead within 60 seconds — day or night — so you book more jobs without hiring extra staff.</p>
+    <p class="hero-sub1">Our AI voice agent calls every new lead within 60 seconds — day or night — so you book more jobs without hiring extra staff.</p>
+    <p class="hero-sub2">Whether you need one thing fixed or a complete growth system built — we tailor every solution to your business. Pick one service or stack them all.</p>
     <div class="hero-ctas">
       <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Strategy Call</a>
       <a href="#how" class="btn btn-outline">See How It Works</a>
@@ -572,6 +966,40 @@
         </ul>
       </div>
     </div>
+
+    <!-- Cost Cycle -->
+    <div class="cost-cycle-wrap">
+      <div class="cost-cycle-label">The Painful Monthly Spend Loop Most Contractors Are Stuck In</div>
+      <div class="cost-cycle">
+        <div class="cc-step">
+          <div class="cc-bullet">1</div>
+          <span>Paying <strong>$100–120 per lead</strong> on Google LSA — every single month</span>
+        </div>
+        <div class="cc-arrow">↓</div>
+        <div class="cc-step">
+          <div class="cc-bullet">2</div>
+          <span>Paying <strong>$2,500–4,000/mo</strong> for a dispatcher or receptionist to handle calls</span>
+        </div>
+        <div class="cc-arrow">↓</div>
+        <div class="cc-step">
+          <div class="cc-bullet">3</div>
+          <span>Leads still <strong>fall through after hours and on weekends</strong> — no one picks up</span>
+        </div>
+        <div class="cc-arrow">↓</div>
+        <div class="cc-step">
+          <div class="cc-bullet">4</div>
+          <span><strong>No follow-up system</strong> — lost revenue and zero re-marketing to past customers</span>
+        </div>
+        <div class="cc-arrow">↓</div>
+        <div class="cc-step">
+          <div class="cc-bullet">5</div>
+          <span>Back to paying Google for more leads — <strong>the cycle repeats</strong></span>
+        </div>
+        <div class="cc-arrow">↓</div>
+        <div class="cc-total">Total monthly cost of this cycle: <span style="font-size:1.15rem;">$4,000–$4,800+</span></div>
+      </div>
+    </div>
+
   </div>
 </section>
 
@@ -606,7 +1034,153 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     5. TESTIMONIAL
+     5. SERVICES
+══════════════════════════════════════ -->
+<section id="services">
+  <div class="container">
+    <div class="services-header">
+      <span class="section-label">Our Services</span>
+      <h2 class="section-title">Our Services — Your Way</h2>
+      <p class="section-subtitle" style="margin: 12px auto 0; text-align: center; max-width: 620px;">Use one service. Combine two. Or deploy the full stack. Every engagement is scoped to what your business actually needs.</p>
+    </div>
+
+    <div class="services-grid">
+
+      <!-- Card 1: AI Voice Agent -->
+      <div class="service-card">
+        <div class="service-icon">🎙️</div>
+        <div class="service-name">AI Voice Agent</div>
+        <div class="service-tagline">Never miss another call — day or night.</div>
+        <ul class="service-bullets">
+          <li>24/7 inbound call answering</li>
+          <li>Lead qualification (service type, issue, location)</li>
+          <li>Automatic appointment booking</li>
+          <li>Missed call text follow-up within 5 minutes</li>
+          <li>Eliminates dispatcher cost for routine calls</li>
+        </ul>
+        <div class="service-price">Starting from: <strong>$597/mo</strong></div>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
+      </div>
+
+      <!-- Card 2: Custom CRM -->
+      <div class="service-card">
+        <div class="service-icon">📋</div>
+        <div class="service-name">Custom CRM Platform</div>
+        <div class="service-tagline">Every lead tracked. Every follow-up automated.</div>
+        <ul class="service-bullets">
+          <li>Centralized lead dashboard</li>
+          <li>Job pipeline: New → Booked → Completed → Invoiced</li>
+          <li>Automated text + email follow-up sequences</li>
+          <li>Customer history and repeat booking triggers</li>
+        </ul>
+        <div class="service-price">Starting from: <strong>$297/mo</strong></div>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
+      </div>
+
+      <!-- Card 3: Website -->
+      <div class="service-card">
+        <div class="service-icon">💻</div>
+        <div class="service-name">Local Service Website</div>
+        <div class="service-tagline">A website that actually brings in jobs.</div>
+        <ul class="service-bullets">
+          <li>Mobile-optimized, fast-loading design</li>
+          <li>Local SEO targeting for your service area</li>
+          <li>Click-to-call and online booking built in</li>
+          <li>Review showcase to build instant trust</li>
+          <li>Reduces Google ad dependency over time</li>
+        </ul>
+        <div class="service-price">Starting from: <strong>$397/mo</strong></div>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
+      </div>
+
+      <!-- Card 4: Meta Ads -->
+      <div class="service-card">
+        <div class="service-icon">🎯</div>
+        <div class="service-name">Meta AI Ad Management</div>
+        <div class="service-tagline">Leads at $15–40 instead of $100–120.</div>
+        <ul class="service-bullets">
+          <li>Facebook + Instagram campaigns for homeowners</li>
+          <li>Meta Advantage+ AI targeting</li>
+          <li>AI-generated ad creatives and copy variations</li>
+          <li>Monthly performance reports with full transparency</li>
+        </ul>
+        <div class="service-price">Starting from: <strong>$397/mo</strong></div>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Learn More / Get a Quote</a>
+      </div>
+
+    </div>
+
+    <!-- Bundle Strip -->
+    <div class="bundle-strip">
+      <div class="bundle-strip-text">
+        <h3>Want it all? The Full Stack Bundle.</h3>
+        <p>All four services — deeply integrated and managed as one system. Each piece makes the others more effective. This is where the biggest ROI lives.</p>
+      </div>
+      <a href="#pricing" class="btn btn-primary">See Full Stack Pricing</a>
+    </div>
+
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     6. BEFORE VS. AFTER COMPARISON
+══════════════════════════════════════ -->
+<section id="comparison">
+  <div class="container">
+    <div class="comp-header">
+      <span class="section-label">The Math</span>
+      <h2 class="section-title">Before vs. After Vasatai</h2>
+      <p class="section-subtitle" style="margin: 12px auto 0; text-align: center;">See exactly what the current system costs — and what you actually save.</p>
+    </div>
+    <div class="comp-table-wrap">
+      <table class="comp-table">
+        <thead>
+          <tr>
+            <th></th>
+            <th>Google LSA Only</th>
+            <th>Vasatai Full Stack</th>
+            <th class="col-save">You Save</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Monthly lead cost</td>
+            <td>$1,500 <span style="font-size:0.82rem;color:#6b7fa3;">(15 leads @ $100–120)</span></td>
+            <td>$300 <span style="font-size:0.82rem;color:#6b7fa3;">(Meta ad spend)</span></td>
+            <td class="col-save">$1,200</td>
+          </tr>
+          <tr>
+            <td>Dispatcher / receptionist</td>
+            <td>$2,500–3,000/mo</td>
+            <td>$0 <span style="font-size:0.82rem;color:#6b7fa3;">(AI handles it)</span></td>
+            <td class="col-save">$2,500+</td>
+          </tr>
+          <tr>
+            <td>Website + CRM</td>
+            <td>$200–300/mo</td>
+            <td>Included</td>
+            <td class="col-save">$200+</td>
+          </tr>
+          <tr class="row-total">
+            <td>Total Monthly</td>
+            <td>$4,200–4,800</td>
+            <td>$997–1,497</td>
+            <td class="col-save">$2,700–3,800</td>
+          </tr>
+          <tr class="row-total">
+            <td>Cost per lead</td>
+            <td>$100–120</td>
+            <td>$15–40</td>
+            <td class="col-save">70% cheaper</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════════════════════════════
+     7. TESTIMONIAL
 ══════════════════════════════════════ -->
 <section id="testimonial">
   <div class="container">
@@ -628,37 +1202,123 @@
 </section>
 
 <!-- ══════════════════════════════════════
-     6. PRICING
+     8. PRICING
 ══════════════════════════════════════ -->
 <section id="pricing">
   <div class="container">
-    <span class="section-label">Simple Pricing</span>
-    <h2 class="section-title light">One Plan. Everything Included.</h2>
-    <p class="section-subtitle light" style="margin:12px auto 0; text-align:center;">No hidden fees. No long-term contracts. Cancel anytime.</p>
-    <div class="pricing-card">
-      <div class="pricing-badge">Most Popular</div>
-      <div class="pricing-plan">AI Voice Agent — Full Service</div>
-      <div class="pricing-price"><sup>$</sup>997<sub>/mo</sub></div>
-      <div class="pricing-note">Everything you need to never miss another lead.</div>
-      <hr class="pricing-divider" />
-      <ul class="feature-list">
-        <li>Custom AI voice agent trained on your business</li>
-        <li>Instant lead callback (within 60 seconds)</li>
-        <li>Appointment booking &amp; calendar sync</li>
-        <li>24/7 coverage — nights, weekends &amp; holidays</li>
-        <li>Integration with your existing lead sources</li>
-        <li>Monthly performance reports</li>
-        <li>Dedicated onboarding &amp; support specialist</li>
-        <li>Unlimited calls — no per-call charges</li>
-      </ul>
-      <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Get Started Today</a>
-      <p class="pricing-guarantee">30-day money-back guarantee if you don't see results.</p>
+    <span class="section-label">Pricing</span>
+    <h2 class="section-title light">Full Stack Bundles — Everything Integrated</h2>
+    <p class="section-subtitle light" style="margin:12px auto 0; text-align:center;">Best value when you want the complete system working together.</p>
+
+    <div class="pricing-tiers">
+
+      <!-- Tier 1: Essential Starter -->
+      <div class="tier-card">
+        <div class="tier-name">Essential Starter</div>
+        <div class="tier-setup">Setup fee: $1,497</div>
+        <div class="tier-price"><sup>$</sup>597<sub>/mo</sub></div>
+        <hr class="tier-divider" />
+        <ul class="tier-features">
+          <li>AI Voice Agent (Basic)</li>
+          <li>CRM Platform Access</li>
+          <li>5-Page Local Website</li>
+          <li>1 Meta Ad Campaign</li>
+          <li>Up to $300 ad spend managed</li>
+          <li>Basic Monthly Report</li>
+          <li>Email Support</li>
+        </ul>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-outline">Get Started</a>
+      </div>
+
+      <!-- Tier 2: Growth (Most Popular) -->
+      <div class="tier-card popular">
+        <div class="tier-popular-badge">Most Popular</div>
+        <div class="tier-name">Growth</div>
+        <div class="tier-setup">Setup fee: $2,497</div>
+        <div class="tier-price"><sup>$</sup>997<sub>/mo</sub></div>
+        <hr class="tier-divider" />
+        <ul class="tier-features">
+          <li>AI Voice Agent (Advanced)</li>
+          <li>CRM + Outbound Follow-Up</li>
+          <li>8-Page Website + Blog</li>
+          <li>2 Meta Ad Campaigns</li>
+          <li>Up to $600 ad spend managed</li>
+          <li>Review Request Automation</li>
+          <li>Detailed Monthly Report</li>
+          <li>Email + Chat Support</li>
+        </ul>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Get Started</a>
+      </div>
+
+      <!-- Tier 3: Elite -->
+      <div class="tier-card">
+        <div class="tier-name">Elite</div>
+        <div class="tier-setup">Setup fee: $3,497</div>
+        <div class="tier-price"><sup>$</sup>1,497<sub>/mo</sub></div>
+        <hr class="tier-divider" />
+        <ul class="tier-features">
+          <li>AI Voice Agent (Fully Branded)</li>
+          <li>CRM + Full Automation Suite</li>
+          <li>Full SEO Website Build</li>
+          <li>4 Meta Ad Campaigns</li>
+          <li>Up to $1,000 ad spend managed</li>
+          <li>Review + Repeat Customer Automation</li>
+          <li>Full Performance Dashboard</li>
+          <li>Priority Support + Monthly Strategy Call</li>
+        </ul>
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-outline">Get Started</a>
+      </div>
+
     </div>
+
+    <!-- À La Carte -->
+    <div class="alacarte-wrap">
+      <div class="alacarte-header">
+        <h3>Just Need One Thing? Start There.</h3>
+        <p>Every service is available standalone. No package required.</p>
+      </div>
+      <table class="alacarte-table">
+        <thead>
+          <tr>
+            <th>Service</th>
+            <th>Starting Price</th>
+            <th>Setup Fee</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>AI Voice Agent</td>
+            <td>$597/mo</td>
+            <td>$997</td>
+          </tr>
+          <tr>
+            <td>Custom CRM</td>
+            <td>$297/mo</td>
+            <td>$497</td>
+          </tr>
+          <tr>
+            <td>Local Service Website</td>
+            <td>$397/mo</td>
+            <td>$797</td>
+          </tr>
+          <tr>
+            <td>Meta AI Ad Management</td>
+            <td>$397/mo</td>
+            <td>$497</td>
+          </tr>
+        </tbody>
+      </table>
+      <p class="alacarte-note">Not sure what you need? Book a free strategy call and we'll scope the right solution for your business.</p>
+      <div class="alacarte-cta">
+        <a href="https://calendly.com" target="_blank" rel="noopener" class="btn btn-primary">Book a Free Strategy Call</a>
+      </div>
+    </div>
+
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     7. FAQ
+     9. FAQ
 ══════════════════════════════════════ -->
 <section id="faq">
   <div class="container">
@@ -708,12 +1368,42 @@
         </div>
       </div>
 
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do I have to buy the full package or can I start with just one service?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          You can start with any single service — many clients begin with just the AI Voice Agent or a new website and add more over time. There's no requirement to take the full stack. We'll recommend the right starting point on your strategy call.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          Do you only work with appliance repair companies?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          No — Vasatai is built for all home service contractors. HVAC, plumbing, appliance repair, roofing, electrical, and general contracting are all a great fit. If your business depends on inbound leads and phone bookings, our system is designed for you.
+        </div>
+      </div>
+
+      <div class="faq-item">
+        <button class="faq-question" aria-expanded="false">
+          What is the Full Stack system and why is it better than individual services?
+          <span class="faq-icon">+</span>
+        </button>
+        <div class="faq-answer">
+          The Full Stack combines our AI Voice Agent, Custom CRM, Local Website, and Meta Ad Management into one deeply integrated system. Leads come in through ads, get answered by AI, are tracked in the CRM, and followed up automatically. Each piece makes the others more effective. Individual services are great starting points — the full stack is where the biggest ROI lives.
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
 
 <!-- ══════════════════════════════════════
-     8. FOOTER
+     10. FOOTER
 ══════════════════════════════════════ -->
 <footer>
   <div class="footer-logo">Vasat<span>AI</span> Solutions</div>
