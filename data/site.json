@@ -46,6 +46,10 @@
       "setup": 797
     },
     {
+      "slug": "google-ads",
+      "name": "Google Ads Management"
+    },
+    {
       "slug": "meta-ads",
       "name": "Meta AI Ad Management",
       "from_monthly": 397,
@@ -91,5 +95,5 @@
       "name": "Electrical & Roofing"
     }
   ],
-  "_sources": "name, url, city, services and plans come from the live site (index.html at commit 5086155). industries come from the Stitch design and are not on the live site yet. The Stitch design also shows a Google Ads service that the live site does not sell; it is left out until the owner confirms it."
+  "_sources": "name, url, city, services and plans come from the live site (index.html at commit 5086155). industries come from the Stitch design and are not on the live site yet. Google Ads Management was added on the owner's instruction on 2026-10-08; it has no from_monthly or setup because the owner has not given a price and the site shows no prices."
 }

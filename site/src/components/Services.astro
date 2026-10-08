@@ -3,7 +3,7 @@ import { Icon } from "astro-icon/components";
 import BookButton from "./BookButton.astro";
 import { service } from "../data/facts.js";
 import { serviceCopy, voiceAgent } from "../data/home.js";
-const order = ["local-service-website", "meta-ads", "custom-crm"];
+const order = ["local-service-website", "google-ads", "meta-ads", "custom-crm"];
 const tones = {
   blue: { card: "hover:border-blue-400/50", icon: "bg-blue-600 text-white", tag: "border-blue-400/30 bg-blue-500/20 text-blue-300" },
   gold: { card: "hover:border-amber-400/50", icon: "bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950", tag: "border-amber-400/30 bg-amber-400/20 text-amber-300" },
@@ -67,7 +67,7 @@ const voice = service("ai-voice-agent");
         </div>
       </article>
 
-      <article class="flex flex-col gap-4 rounded-2xl border border-amber-400/30 bg-navy-card p-7 text-white shadow-xl transition-all hover:border-amber-400/60">
+      <article class="flex flex-col gap-4 rounded-2xl border border-amber-400/30 bg-navy-card p-7 text-white shadow-xl transition-all hover:border-amber-400/60 md:col-span-2 lg:col-span-3">
         <div class="flex items-center justify-between">
           <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 shadow-md">
             <Icon name="material-symbols:layers-outline" class="h-[26px] w-[26px]" aria-hidden="true" />
@@ -75,7 +75,7 @@ const voice = service("ai-voice-agent");
           <span class="rounded-full border border-amber-400/30 bg-amber-400/20 px-3 py-1 font-label-sm text-label-sm font-bold text-amber-300">Best Value</span>
         </div>
         <h3 class="font-headline-md text-headline-md font-bold text-white">The Full Stack Bundle</h3>
-        <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">All four services in one managed growth system. Leads come in, AI answers, the CRM tracks, and ads run. Each piece makes the others more effective.</p>
+        <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">All five services in one managed growth system. Leads come in, AI answers, the CRM tracks, and ads run. Each piece makes the others more effective.</p>
         <a class="mt-auto inline-flex items-center gap-1.5 border-t border-white/10 pt-4 font-label-lg text-label-lg text-amber-300 hover:text-amber-200" href="#contact">
           Talk to us about the full stack <Icon name="material-symbols:arrow-forward" class="h-4 w-4" aria-hidden="true" />
         </a>

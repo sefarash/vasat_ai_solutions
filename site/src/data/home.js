@@ -26,6 +26,13 @@ export const serviceCopy = {
     tagline: "A website that actually brings in jobs.",
     bullets: ["Mobile-optimized, fast-loading design", "Local SEO targeting for your service area", "Click-to-call and online booking built in", "Review showcase to build instant trust"],
   },
+  "google-ads": {
+    icon: "material-symbols:ads-click",
+    tag: "High Intent",
+    tone: "gold",
+    tagline: "Search campaigns that put you in front of homeowners already looking for the service you offer.",
+    bullets: ["Campaigns built around your services and service area", "Keyword targeting and ad copy written for your trade", "Monthly performance reports with full transparency"],
+  },
   "meta-ads": {
     icon: "material-symbols:campaign-outline",
     tag: "Social Scale",
@@ -55,7 +62,7 @@ export const voiceAgent = {
 export const steps = [
   {
     title: "We Scope Your Solution",
-    text: "We start with a free strategy call to understand your business — your lead sources, current costs, and biggest gaps. We recommend exactly which services will move the needle for you, whether that's one or all four.",
+    text: "We start with a free strategy call to understand your business — your lead sources, current costs, and biggest gaps. We recommend exactly which services will move the needle for you, whether that's one or all five.",
     chip: "Free strategy call",
     icon: "material-symbols:monitoring",
   },
@@ -106,7 +113,7 @@ export const faqs = [
   { q: "Does it work with my current scheduling software?", a: "Yes. We integrate with Google Calendar, Jobber, ServiceTitan, Housecall Pro, and more. If you use something else, we'll scope the integration during your onboarding call." },
   { q: "What kinds of contractors is this best suited for?", a: "Vasat AI is built for home service businesses — HVAC, plumbing, appliance repair, roofing, electrical, general contracting, and more. If your business depends on inbound leads and phone bookings, this system is built for you." },
   { q: "Do you only work with appliance repair companies?", a: "No — we work with all home service contractors. Appliance repair is one of our core markets in Houston, but the system works for any business that books jobs over the phone or from inbound leads." },
-  { q: "What is the Full Stack system and why is it better than individual services?", a: "The Full Stack combines all four services — AI Voice Agent, CRM, Website, and Meta Ads — into one integrated growth system. Leads come in through ads, get answered by AI, are tracked in the CRM, and followed up automatically. Each piece makes the others more effective. Individual services are a great starting point — the full stack is where the biggest ROI lives." },
+  { q: "What is the Full Stack system and why is it better than individual services?", a: "The Full Stack combines all five services — AI Voice Agent, CRM, Website, Google Ads, and Meta Ads — into one integrated growth system. Leads come in through ads, get answered by AI, are tracked in the CRM, and followed up automatically. Each piece makes the others more effective. Individual services are a great starting point — the full stack is where the biggest ROI lives." },
 ];
 
 export const trades = ["HVAC & Air Conditioning", "Appliance Repair", "Residential or Commercial Cleaning", "Plumbing & Rooter", "Electrical Services", "Roofing & Storm Restoration", "Other Home Service"];
