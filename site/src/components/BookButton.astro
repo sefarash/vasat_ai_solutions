@@ -1,0 +1,11 @@
+---
+// Every booking call to action goes through here so the link is read from data/site.json once.
+import { booking } from "../data/facts.js";
+interface Props {
+  class?: string;
+  label?: string;
+}
+const { class: className = "", label = booking.label } = Astro.props;
+---
+
+<a href={booking.url} target="_blank" rel="noopener" class={className}><slot>{label}</slot></a>

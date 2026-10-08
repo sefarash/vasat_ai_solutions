@@ -1,17 +1,11 @@
+# The redesigned site: built from site/, published from site/dist.
+# The legacy single-file site in the repo root (index.html etc.) is no longer published from this branch.
 [build]
-  publish = "."
+  base = "site"
+  command = "npm run build"
+  publish = "dist"
 
-[[redirects]]
-  from = "/privacy-policy"
-  to = "/privacy-policy.html"
-  status = 200
+[build.environment]
+  NODE_VERSION = "20"
 
-[[redirects]]
-  from = "/terms-of-service"
-  to = "/terms-of-service.html"
-  status = 200
-
-[[redirects]]
-  from = "/*"
-  to = "/index.html"
-  status = 200
+# No catch-all rewrite: unknown URLs get the real 404 page (site/src/pages/404.astro).

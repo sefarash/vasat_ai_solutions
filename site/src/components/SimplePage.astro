@@ -1,0 +1,25 @@
+---
+// Header band + white card, for legal and utility pages. Mirrors the home page's dark/light rhythm.
+import Base from "../layouts/Base.astro";
+import { page } from "../data/facts.js";
+interface Props {
+  route: string;
+  intro?: string;
+}
+const { route, intro } = Astro.props;
+const plan = page(route);
+---
+
+<Base route={route}>
+  <section class="border-b border-primary/30 bg-gradient-to-b from-navy-950 via-navy-850 to-navy-800 px-6 py-14 text-white lg:px-12">
+    <div class="mx-auto max-w-4xl">
+      <h1 class="font-headline-xl text-[34px] font-extrabold leading-[42px] text-white sm:text-headline-xl">{plan.h1}</h1>
+      {intro && <p class="mt-3 font-body-md text-body-md text-slate-300">{intro}</p>}
+    </div>
+  </section>
+  <section class="bg-surface px-6 py-12 lg:px-12">
+    <div class="mx-auto max-w-4xl rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-10">
+      <slot />
+    </div>
+  </section>
+</Base>

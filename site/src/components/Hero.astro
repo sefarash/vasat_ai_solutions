@@ -1,0 +1,117 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import photo from "../assets/technician-van.jpg";
+import BookButton from "./BookButton.astro";
+import { business } from "../data/facts.js";
+interface Props {
+  h1: string;
+}
+const { h1 } = Astro.props;
+// The design sets the last sentence of the headline in gold.
+const cut = h1.lastIndexOf(". ", h1.length - 2);
+const lead = cut > 0 ? h1.slice(0, cut + 1) : h1;
+const accent = cut > 0 ? h1.slice(cut + 2) : "";
+const chip = "flex items-center gap-1.5";
+---
+
+<section class="relative overflow-hidden border-b border-primary/30 bg-gradient-to-b from-navy-950 via-navy-850 to-navy-800 px-6 py-16 text-white lg:px-12 lg:py-24">
+  <div class="pointer-events-none absolute right-1/4 top-0 h-[480px] w-[480px] rounded-full bg-blue-600/15 blur-3xl"></div>
+  <div class="pointer-events-none absolute bottom-0 left-10 h-96 w-96 rounded-full bg-amber-500/10 blur-3xl"></div>
+  <div class="relative z-10 mx-auto grid max-w-7xl grid-cols-1 items-center gap-12 lg:grid-cols-12">
+    <div class="flex flex-col gap-6 lg:col-span-7">
+      <div class="inline-flex w-fit items-center gap-2 rounded-full border border-amber-400/30 bg-white/10 px-4 py-2 text-amber-300 shadow-sm backdrop-blur-md">
+        <Icon name="material-symbols:verified-outline" class="h-[18px] w-[18px] shrink-0 text-amber-400" aria-hidden="true" />
+        <span class="font-label-sm text-label-sm font-semibold uppercase tracking-wide">{business.city}-Based • Exclusively for Home Service Contractors</span>
+      </div>
+      <h1 class="font-headline-xl text-[36px] font-extrabold leading-[44px] tracking-tight text-white sm:text-headline-xl lg:text-[54px] lg:leading-[62px]">
+        {lead}
+        {accent && <span class="bg-gradient-to-r from-amber-400 via-amber-300 to-amber-200 bg-clip-text text-transparent underline decoration-amber-400/40 decoration-wavy">{accent}</span>}
+      </h1>
+      <p class="max-w-2xl font-body-lg text-body-lg leading-relaxed text-slate-200">
+        We build high-ranking websites, Meta ad campaigns, custom CRMs and 24/7 AI voice agents that turn {business.city} homeowners into booked jobs on your calendar.
+      </p>
+      <div class="flex flex-col items-stretch gap-4 pt-2 sm:flex-row sm:items-center">
+        <BookButton class="btn-gold group px-8 py-4 font-headline-sm text-headline-sm shadow-[0_6px_24px_rgba(212,175,55,0.4)]">
+          <span>Book a Free Consultation</span>
+          <Icon name="material-symbols:arrow-forward" class="h-6 w-6 transition-transform group-hover:translate-x-1" aria-hidden="true" />
+        </BookButton>
+        <a class="flex items-center justify-center gap-2 rounded-xl border border-white/20 bg-white/10 px-8 py-4 font-headline-sm text-headline-sm text-white backdrop-blur-md transition-all hover:bg-white/15" href="#services">
+          <span>See Our Services</span>
+          <Icon name="material-symbols:expand-more" class="h-6 w-6 text-amber-300" aria-hidden="true" />
+        </a>
+      </div>
+      <div class="flex flex-wrap items-center gap-x-6 gap-y-2 pt-2 font-label-md text-label-md text-slate-300">
+        <span class={chip}><Icon name="material-symbols:verified-outline" class="h-[18px] w-[18px] text-amber-400" aria-hidden="true" /> One service or the full stack</span>
+        <span class={chip}><Icon name="material-symbols:bolt-outline" class="h-[18px] w-[18px] text-amber-400" aria-hidden="true" /> Live in 5–7 business days</span>
+        <span class={chip}><Icon name="material-symbols:support-agent" class="h-[18px] w-[18px] text-amber-400" aria-hidden="true" /> Calls covered 24/7</span>
+      </div>
+    </div>
+
+    <!-- Illustration of the product: sample numbers, not a client's results. -->
+    <div class="relative lg:col-span-5" role="img" aria-label="Illustration: a contractor website with a live lead dashboard and an AI voice agent confirming a booking">
+      <div class="relative mx-auto mt-12 max-w-md lg:mb-28 lg:mt-6 lg:max-w-none" aria-hidden="true">
+        <div class="relative z-10 rounded-2xl border border-slate-200/80 bg-surface-container-lowest p-4 text-on-surface shadow-2xl">
+          <div class="-mx-4 -mt-4 mb-3 flex items-center justify-between rounded-t-2xl border-b border-slate-200 bg-slate-100 px-4 py-2.5">
+            <div class="flex items-center gap-1.5">
+              <div class="h-3 w-3 rounded-full bg-red-400"></div>
+              <div class="h-3 w-3 rounded-full bg-amber-400"></div>
+              <div class="h-3 w-3 rounded-full bg-blue-500"></div>
+            </div>
+            <div class="flex items-center gap-1 rounded border border-slate-200 bg-white px-3 py-1 text-[11px] font-bold text-slate-600">
+              <Icon name="material-symbols:lock-outline" class="h-[13px] w-[13px] text-amber-600" /> your-business.com
+            </div>
+            <div class="w-4"></div>
+          </div>
+          <div class="relative mb-4 h-48 overflow-hidden rounded-xl bg-slate-900">
+            <Image src={photo} alt="" widths={[480, 800]} sizes="(min-width: 1024px) 480px, 90vw" loading="eager" fetchpriority="high" class="h-full w-full object-cover" />
+            <div class="absolute inset-0 flex items-end bg-gradient-to-t from-slate-950/90 via-slate-950/30 to-transparent p-4">
+              <div class="text-white">
+                <span class="inline-block rounded bg-amber-400 px-2.5 py-0.5 font-label-sm text-label-sm font-bold uppercase text-slate-950 shadow-sm">Live Lead Funnel</span>
+                <p class="mt-1 font-headline-sm text-headline-sm font-bold text-white">Your Business Name</p>
+              </div>
+            </div>
+          </div>
+          <div class="grid grid-cols-2 gap-2 text-center text-on-surface">
+            <div class="rounded-lg border border-blue-100 bg-blue-50/80 p-2.5">
+              <span class="block font-label-sm text-label-sm text-slate-500">Today's Inbound</span>
+              <span class="font-headline-sm text-headline-sm font-bold text-primary">19 Calls</span>
+            </div>
+            <div class="rounded-lg border border-amber-200/60 bg-amber-50/80 p-2.5">
+              <span class="block font-label-sm text-label-sm text-slate-500">Confirmed Slots</span>
+              <span class="font-headline-sm text-headline-sm font-bold text-amber-700">16 Booked</span>
+            </div>
+          </div>
+          <p class="mt-2 text-right text-[11px] text-slate-500">Sample dashboard for illustration</p>
+        </div>
+        <div class="relative z-20 mt-4 w-full rounded-2xl border border-blue-400/30 bg-gradient-to-br from-[#0c1b3d] to-navy-footer p-4 text-white shadow-2xl lg:absolute lg:-bottom-32 lg:-left-10 lg:mt-0 lg:w-80">
+          <div class="mb-3 flex items-center justify-between">
+            <div class="flex items-center gap-2">
+              <span class="relative flex h-3 w-3">
+                <span class="absolute inline-flex h-full w-full animate-ping rounded-full bg-amber-400 opacity-75"></span>
+                <span class="relative inline-flex h-3 w-3 rounded-full bg-amber-400"></span>
+              </span>
+              <span class="font-label-sm text-label-sm font-bold uppercase tracking-wider text-amber-300">Live AI Voice Agent</span>
+            </div>
+            <Icon name="material-symbols:phone-in-talk-outline" class="h-5 w-5 text-blue-400" />
+          </div>
+          <p class="font-label-md text-label-md font-semibold text-white">24/7 Call Answering Active</p>
+          <p class="mt-1 font-body-sm text-body-sm text-slate-300">"Booking confirmed for tomorrow, 9:00 AM"</p>
+          <div class="mt-3 flex items-center justify-between rounded-lg border border-white/10 bg-white/5 px-2.5 py-1.5 text-[11px] text-slate-300">
+            <span>Duration: 1m 14s</span>
+            <span class="flex items-center gap-1 font-semibold text-amber-300">Synced to Calendar ✓</span>
+          </div>
+        </div>
+        <div class="absolute -right-2 -top-12 z-20 flex lg:-top-10 items-center gap-3 rounded-2xl border border-amber-300/60 bg-white p-3.5 text-on-surface shadow-xl sm:-right-8">
+          <div class="flex h-10 w-10 items-center justify-center rounded-xl bg-amber-100 font-bold text-amber-700">
+            <Icon name="material-symbols:bolt-outline" class="h-6 w-6" />
+          </div>
+          <div>
+            <p class="font-headline-sm text-headline-sm font-extrabold text-primary">60s</p>
+            <p class="font-label-sm text-label-sm font-medium text-on-surface-variant">Avg. response to new leads</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>

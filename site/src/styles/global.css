@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    scroll-behavior: smooth;
+    scroll-padding-top: 5.5rem; /* the fixed header */
+  }
+  :focus-visible {
+    outline: 2px solid theme("colors.amber.400");
+    outline-offset: 2px;
+  }
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+    }
+  }
+}
+
+@layer components {
+  .btn-gold {
+    @apply inline-flex items-center justify-center gap-2 rounded-xl border border-amber-300 bg-gradient-to-r from-amber-500 via-amber-400 to-amber-500 font-bold text-slate-950 transition-all hover:from-amber-600 hover:to-amber-500;
+  }
+  .eyebrow {
+    @apply w-fit rounded-full border px-3.5 py-1 font-label-sm text-label-sm font-bold uppercase tracking-wider;
+  }
+  .section {
+    @apply px-6 py-20 lg:px-12;
+  }
+  .container-site {
+    @apply mx-auto max-w-7xl;
+  }
+
+  /* Long-form legal text, taken over from the legacy pages. */
+  .legal h2 {
+    @apply mb-3 mt-10 font-headline-md text-headline-md text-on-surface;
+  }
+  .legal h3 {
+    @apply mb-2 mt-6 font-headline-sm text-headline-sm text-on-surface;
+  }
+  .legal p,
+  .legal li {
+    @apply font-body-md text-body-md text-on-surface-variant;
+  }
+  .legal p {
+    @apply mb-4;
+  }
+  .legal ul {
+    @apply mb-4 list-disc space-y-1.5 pl-6;
+  }
+  .legal a {
+    @apply text-secondary underline underline-offset-2 hover:text-primary;
+  }
+  .legal strong {
+    @apply font-semibold text-on-surface;
+  }
+}
+
+@layer components {
+  .legal ol {
+    @apply mb-4 list-decimal space-y-1.5 pl-6;
+  }
+  .legal .toc {
+    @apply mb-8 rounded-xl border border-surface-container bg-surface-container-low p-6;
+  }
+  .legal .toc ol {
+    @apply mb-0 mt-3 grid gap-x-8 gap-y-1.5 space-y-0 sm:grid-cols-2;
+  }
+  .legal .callout {
+    @apply mb-6 rounded-xl border-l-4 border-amber-400 bg-amber-50 p-5;
+  }
+  .legal .callout p:last-child {
+    @apply mb-0;
+  }
+}

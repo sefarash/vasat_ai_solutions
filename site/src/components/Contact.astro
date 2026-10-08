@@ -1,0 +1,96 @@
+---
+import { Icon } from "astro-icon/components";
+import BookButton from "./BookButton.astro";
+import { business, booking, leadForm } from "../data/facts.js";
+import { trades } from "../data/home.js";
+// Netlify Forms reads this form from the built HTML at deploy time. Form detection must be on in the
+// Netlify dashboard, and a field added here only registers after the next deploy.
+const label = "font-label-sm text-label-sm font-semibold text-on-surface";
+const field = "w-full rounded-lg border border-slate-200 bg-surface-container-low px-4 py-3 font-body-sm text-body-sm text-on-surface focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600";
+const tile = "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border";
+---
+
+<section class="section relative bg-gradient-to-b from-navy-900 via-[#0b1c3c] to-[#060f22] text-white" id="contact">
+  <div class="mx-auto grid max-w-7xl grid-cols-1 items-start gap-12 lg:grid-cols-12">
+    <div class="flex flex-col gap-6 lg:col-span-5">
+      <span class="eyebrow border-amber-400/40 bg-amber-400/20 text-amber-300">Zero-Pressure Discovery</span>
+      <h2 class="font-headline-lg text-[30px] font-extrabold leading-10 text-white sm:text-headline-lg lg:text-[40px] lg:leading-[48px]">Ready to Fill Your Schedule with High-Paying Service Jobs?</h2>
+      <p class="font-body-lg text-body-lg leading-relaxed text-slate-300">Book a free strategy call or send us a few details. We'll look at your lead sources, current costs and biggest gaps, and scope the right solution. No pressure, no tech jargon.</p>
+      <div class="flex flex-col gap-4 pt-4">
+        <div class="flex items-center gap-3">
+          <div class={`${tile} border-amber-400/40 bg-amber-400/20 text-amber-300`}><Icon name="material-symbols:calendar-month-outline" class="h-6 w-6" aria-hidden="true" /></div>
+          <div>
+            <p class="font-label-sm text-label-sm text-slate-400">Pick a time that suits you</p>
+            <BookButton class="font-headline-sm text-headline-sm font-bold text-white transition-colors hover:text-amber-300">Book a {booking.duration_minutes}-minute call</BookButton>
+          </div>
+        </div>
+        {business.email && (
+          <div class="flex items-center gap-3">
+            <div class={`${tile} border-blue-400/40 bg-blue-500/20 text-blue-300`}><Icon name="material-symbols:mail-outline" class="h-6 w-6" aria-hidden="true" /></div>
+            <div>
+              <p class="font-label-sm text-label-sm text-slate-400">Email us</p>
+              <a class="break-all font-body-md text-body-md font-medium text-white hover:text-amber-300" href={`mailto:${business.email}`}>{business.email}</a>
+            </div>
+          </div>
+        )}
+        <div class="flex items-center gap-3">
+          <div class={`${tile} border-amber-400/40 bg-amber-400/20 text-amber-300`}><Icon name="material-symbols:location-on-outline" class="h-6 w-6" aria-hidden="true" /></div>
+          <div>
+            <p class="font-label-sm text-label-sm text-slate-400">Where we work</p>
+            <p class="font-body-md text-body-md font-medium text-white">{business.city}, {business.region} • Serving Greater {business.city}</p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="lg:col-span-7">
+      <div class="relative rounded-2xl border-2 border-amber-400/30 bg-white p-8 text-on-surface shadow-2xl sm:p-10">
+        <div class="mb-6">
+          <h3 class="font-headline-md text-headline-md font-bold text-on-surface">Request Your Free Strategy Call</h3>
+          <p class="mt-1 font-body-sm text-body-sm text-on-surface-variant">Fill out the quick details below and we'll get back to you to set up your call.</p>
+        </div>
+        <form class="grid grid-cols-1 gap-4 sm:grid-cols-2" name={leadForm.form_name} method="POST" action={leadForm.thank_you_route} data-netlify="true" netlify-honeypot="company-website">
+          <input type="hidden" name="form-name" value={leadForm.form_name} />
+          <p class="hidden"><label>Leave this empty: <input name="company-website" tabindex="-1" autocomplete="off" /></label></p>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="fullName">Full Name *</label>
+            <input class={field} id="fullName" name="name" type="text" autocomplete="name" placeholder="e.g. John Miller" required />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="bizName">Business Name *</label>
+            <input class={field} id="bizName" name="business" type="text" autocomplete="organization" placeholder="e.g. Miller Air & Heat" required />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="phone">Phone Number *</label>
+            <input class={field} id="phone" name="phone" type="tel" autocomplete="tel" inputmode="tel" placeholder="Best number to reach you" required />
+          </div>
+          <div class="flex flex-col gap-1.5">
+            <label class={label} for="email">Email Address *</label>
+            <input class={field} id="email" name="email" type="email" autocomplete="email" placeholder="Your work email" required />
+          </div>
+          <div class="flex flex-col gap-1.5 sm:col-span-2">
+            <label class={label} for="tradeType">Trade / Service Category *</label>
+            <select class={field} id="tradeType" name="trade" required>
+              <option value="">Select your primary service trade...</option>
+              {trades.map((t) => <option value={t}>{t}</option>)}
+            </select>
+          </div>
+          <div class="flex flex-col gap-1.5 sm:col-span-2">
+            <label class={label} for="notes">What is your biggest growth challenge right now?</label>
+            <textarea class={field} id="notes" name="message" rows="3" placeholder="e.g. Missing calls while on service jobs, ads are too costly, need more high-margin installs..."></textarea>
+          </div>
+          <div class="pt-2 sm:col-span-2">
+            <button class="btn-gold w-full px-6 py-4 font-headline-sm text-headline-sm shadow-[0_6px_20px_rgba(212,175,55,0.4)]" type="submit">
+              <span>Request My Free Strategy Call</span>
+              <Icon name="material-symbols:arrow-forward" class="h-6 w-6 shrink-0" aria-hidden="true" />
+            </button>
+          </div>
+          <p class="flex items-center justify-center gap-1.5 pt-2 text-center font-body-sm text-[13px] text-on-surface-variant sm:col-span-2">
+            <Icon name="material-symbols:lock-outline" class="h-4 w-4 shrink-0 text-amber-700" aria-hidden="true" />
+            <span>Your information is confidential. See our <a class="underline underline-offset-2 hover:text-primary" href="/privacy-policy">Privacy Policy</a>.</span>
+          </p>
+        </form>
+      </div>
+    </div>
+  </div>
+</section>

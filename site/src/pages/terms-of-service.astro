@@ -1,0 +1,8 @@
+---
+import SimplePage from "../components/SimplePage.astro";
+import body from "../content/terms-of-service.html?raw";
+---
+
+<SimplePage route="/terms-of-service" intro="Effective date: August 26, 2026 · Last updated: August 26, 2026">
+  <div class="legal" set:html={body} />
+</SimplePage>

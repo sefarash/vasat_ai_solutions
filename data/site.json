@@ -1,0 +1,95 @@
+{
+  "_readme": "Single source of non-secret business facts for the website. Templates read from here; never hard-code a fact in a page. A value starting with TODO is a placeholder: allowed while building, a deploy blocker for production. Do not replace a TODO with a guess; ask the owner. A null value means the business deliberately has none (no public phone, no public address): leave the element out of the page and the schema, do not substitute anything.",
+  "business": {
+    "name": "Vasat AI Solutions",
+    "url": "https://vasataisolutions.com",
+    "city": "Houston",
+    "region": "TX",
+    "phone": null,
+    "email": "contact@vasataisolutions.com",
+    "address": null,
+    "hours": "TODO: support hours (the Stitch design shows Mon-Fri 8am-6pm CT)"
+  },
+  "booking": {
+    "provider": "google-calendar",
+    "duration_minutes": 30,
+    "url": "https://calendar.app.google/DamLe89mdGcbSN4Y6",
+    "label": "Book a Free Consultation",
+    "_note": "The legacy live site still links to the old Calendly page; that changes at cutover, not before."
+  },
+  "lead_form": {
+    "method": "netlify-forms",
+    "form_name": "consultation",
+    "thank_you_route": "/thank-you",
+    "_note": "Leads are delivered by email. The recipient address is set in the Netlify dashboard (Forms > Form notifications), not in this file, so a private inbox is never published with the site."
+  },
+  "analytics": {
+    "ga4_id": "TODO: GA4 measurement ID, or remove this key if analytics is not wanted"
+  },
+  "services": [
+    {
+      "slug": "ai-voice-agent",
+      "name": "AI Voice Agent",
+      "from_monthly": 597,
+      "setup": 997
+    },
+    {
+      "slug": "custom-crm",
+      "name": "Custom CRM Platform",
+      "from_monthly": 297,
+      "setup": 497
+    },
+    {
+      "slug": "local-service-website",
+      "name": "Local Service Website",
+      "from_monthly": 397,
+      "setup": 797
+    },
+    {
+      "slug": "meta-ads",
+      "name": "Meta AI Ad Management",
+      "from_monthly": 397,
+      "setup": 497
+    }
+  ],
+  "plans": [
+    {
+      "name": "Essential Starter",
+      "monthly": 597,
+      "setup": 1497
+    },
+    {
+      "name": "Growth",
+      "monthly": 997,
+      "setup": 2497
+    },
+    {
+      "name": "Elite",
+      "monthly": 1497,
+      "setup": 3497
+    }
+  ],
+  "industries": [
+    {
+      "slug": "hvac",
+      "name": "HVAC & AC Repair"
+    },
+    {
+      "slug": "appliance-repair",
+      "name": "Appliance Repair"
+    },
+    {
+      "slug": "cleaning",
+      "name": "Cleaning Services"
+    },
+    {
+      "slug": "plumbing",
+      "name": "Plumbing & Rooter"
+    },
+    {
+      "slug": "electrical-roofing",
+      "name": "Electrical & Roofing"
+    }
+  ],
+  "_sources": "name, url, city, services and plans come from the live site (index.html at commit 5086155). industries come from the Stitch design and are not on the live site yet. The Stitch design also shows a Google Ads service that the live site does not sell; it is left out until the owner confirms it."
+}

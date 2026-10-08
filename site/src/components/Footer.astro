@@ -1,0 +1,56 @@
+---
+import { Icon } from "astro-icon/components";
+import logo from "../assets/logo.svg";
+import { business, services, industries } from "../data/facts.js";
+const year = new Date().getFullYear();
+const link = "font-body-sm text-body-sm text-slate-300 transition-colors hover:text-amber-300";
+---
+
+<footer class="w-full border-t border-slate-800 bg-navy-footer text-white">
+  <div class="mx-auto grid max-w-7xl grid-cols-1 gap-gutter px-6 py-16 md:grid-cols-2 lg:grid-cols-4 lg:px-12">
+    <div class="flex flex-col gap-space-md">
+      <a class="inline-block max-w-fit rounded-xl bg-white p-2 shadow-sm" href="/" aria-label={`${business.name} home`}>
+        <img src={logo.src} alt={business.name} width={logo.width} height={logo.height} class="h-12 w-auto object-contain sm:h-14" />
+      </a>
+      <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">Helping {business.city} and Texas home service contractors capture every lead and book more jobs with pragmatic AI.</p>
+    </div>
+    <div class="flex flex-col gap-space-sm">
+      <h2 class="mb-space-xs font-headline-sm text-headline-sm font-bold text-white">Core Services</h2>
+      <nav class="flex flex-col gap-space-xs" aria-label="Services">
+        {services.map((s) => <a class={link} href="/#services">{s.name}</a>)}
+        <a class={link} href="/#pricing">Pricing</a>
+      </nav>
+    </div>
+    <div class="flex flex-col gap-space-sm">
+      <h2 class="mb-space-xs font-headline-sm text-headline-sm font-bold text-white">Industries Served</h2>
+      <nav class="flex flex-col gap-space-xs" aria-label="Industries">
+        {industries.map((i) => <a class={link} href="/#industries">{i.name}</a>)}
+      </nav>
+    </div>
+    <div class="flex flex-col gap-space-sm">
+      <h2 class="mb-space-xs font-headline-sm text-headline-sm font-bold text-white">Contact</h2>
+      <div class="flex flex-col gap-space-sm font-body-sm text-body-sm text-slate-300">
+        <div class="flex items-start gap-space-xs">
+          <Icon name="material-symbols:location-on-outline" class="mt-0.5 h-[18px] w-[18px] shrink-0 text-amber-400" aria-hidden="true" />
+          <span>{business.city}, {business.region}</span>
+        </div>
+        {business.email && (
+          <div class="flex items-center gap-space-xs">
+            <Icon name="material-symbols:mail-outline" class="h-[18px] w-[18px] shrink-0 text-amber-400" aria-hidden="true" />
+            <a class="transition-colors hover:text-amber-300" href={`mailto:${business.email}`}>{business.email}</a>
+          </div>
+        )}
+        <a class={link} href="/#contact">Request a free strategy call</a>
+      </div>
+    </div>
+  </div>
+  <div class="border-t border-slate-800/80 bg-navy-deep py-space-md">
+    <div class="mx-auto flex max-w-7xl flex-col items-center justify-between gap-space-sm px-6 text-center md:flex-row md:text-left lg:px-12">
+      <p class="font-body-sm text-body-sm text-slate-400">© {year} {business.name}. All rights reserved.</p>
+      <div class="flex items-center gap-space-md font-label-sm text-label-sm text-slate-400">
+        <a class="transition-colors hover:text-amber-300" href="/privacy-policy">Privacy Policy</a>
+        <a class="transition-colors hover:text-amber-300" href="/terms-of-service">Terms of Service</a>
+      </div>
+    </div>
+  </div>
+</footer>

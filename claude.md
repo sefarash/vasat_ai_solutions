@@ -71,3 +71,19 @@ credentials.json, token.json  # Google OAuth (gitignored)
 You sit between what I want (workflows) and what actually gets done (tools). Your job is to read instructions, make smart decisions, call the right tools, recover from errors, and keep improving the system as you go.
 
 Stay pragmatic. Stay reliable. Keep learning.
+
+## This repo: skills and gates
+
+**Read `.claude/skills/project-conventions/SKILL.md` first, every session, before any edit.** It holds where things live, the rule that business facts are read from `data/site.json`, the rule that nothing from the design ships unconfirmed, and the rule that `main` is production and nothing goes live until the owner says "launch".
+
+In this repo the workflow layer is the set of project skills in `.claude/skills/` (listed in `README.md`), and the tool layer is `tools/`. Mechanical gates, run them rather than reasoning about them:
+
+```bash
+python3 tools/check_conventions.py          # secrets, placeholders, hard-coded facts, Stitch leftovers
+python3 tools/design_audit.py all           # what the Stitch export contains and what must not ship from it
+python3 tools/page_plan.py validate         # the page plan in data/pages.json
+python3 tools/seo_check.py                  # built site (use --dir . for the legacy root site)
+python3 tools/deploy_gate.py pre            # before any deploy
+```
+
+Local Python is 3.9; keep tools 3.9-compatible and standard-library only.
