@@ -1,0 +1,41 @@
+{
+  "_readme": "The page plan: one entry per page the site serves. tools/page_plan.py validates it; tools/seo_check.py compares the built site against it. title <=60 chars, meta <=155, one primary_keyword per page and no two pages sharing one. TODO values are allowed while planning and block a production deploy.",
+  "pages": [
+    {
+      "route": "/",
+      "type": "home",
+      "index": true,
+      "primary_keyword": "TODO: keyword the home page should own",
+      "title": "Vasat AI Solutions | AI Growth Systems for Contractors",
+      "meta": "AI voice agents, custom CRMs, local websites and Meta ads for Houston home service contractors. Use one service or the full stack. Book a free call.",
+      "h1": "More Calls. More Booked Jobs. Powered by AI."
+    },
+    {
+      "route": "/privacy-policy",
+      "type": "legal",
+      "index": true,
+      "primary_keyword": "",
+      "title": "Privacy Policy — Vasat AI Solutions",
+      "meta": "Privacy Policy for Vasat AI Solutions — how we collect, use, and protect your information across our website, AI voice agent, CRM and ad services.",
+      "h1": "Privacy Policy"
+    },
+    {
+      "route": "/terms-of-service",
+      "type": "legal",
+      "index": true,
+      "primary_keyword": "",
+      "title": "Terms of Service — Vasat AI Solutions",
+      "meta": "Terms of Service for Vasat AI Solutions — the terms governing use of our website and our AI voice agent, CRM, website, and advertising services.",
+      "h1": "Terms of Service"
+    },
+    {
+      "route": "/thank-you",
+      "type": "utility",
+      "index": false,
+      "primary_keyword": "",
+      "title": "Thank You | Vasat AI Solutions",
+      "meta": "Your request has been received. Vasat AI Solutions will be in touch to set up your free strategy call.",
+      "h1": "Thanks, We Got Your Request"
+    }
+  ]
+}
