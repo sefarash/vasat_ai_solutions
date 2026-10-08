@@ -1,0 +1,63 @@
+---
+import "@fontsource-variable/sora";
+import "@fontsource-variable/inter";
+import "../styles/global.css";
+import Header from "../components/Header.astro";
+import Footer from "../components/Footer.astro";
+import { business, page } from "../data/facts.js";
+
+interface Props {
+  route: string;
+  schema?: object[];
+}
+const { route, schema = [] } = Astro.props;
+const plan = page(route);
+const todo = (v: string) => !v || v.trim().toUpperCase().startsWith("TODO");
+const title = todo(plan.title) ? business.name : plan.title;
+const description = todo(plan.meta) ? "" : plan.meta;
+const canonical = business.url.replace(/\/$/, "") + (route === "/" ? "/" : route);
+const ogImage = business.url.replace(/\/$/, "") + "/og-image.png";
+
+const organization = {
+  "@context": "https://schema.org",
+  "@type": "ProfessionalService",
+  name: business.name,
+  url: business.url,
+  image: ogImage,
+  ...(business.email ? { email: business.email } : {}),
+  ...(business.phone ? { telephone: business.phone } : {}),
+  areaServed: { "@type": "City", name: `${business.city}, ${business.region}` },
+};
+const webpage = { "@context": "https://schema.org", "@type": "WebPage", name: title, url: canonical };
+const blocks = plan.index ? [route === "/" ? organization : webpage, ...schema] : [];
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>{title}</title>
+    {description && <meta name="description" content={description} />}
+    {!plan.index && <meta name="robots" content="noindex, nofollow" />}
+    <link rel="canonical" href={canonical} />
+    <link rel="icon" type="image/png" href="/favicon.png" />
+    <meta property="og:type" content="website" />
+    <meta property="og:site_name" content={business.name} />
+    <meta property="og:title" content={title} />
+    {description && <meta property="og:description" content={description} />}
+    <meta property="og:url" content={canonical} />
+    <meta property="og:image" content={ogImage} />
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="theme-color" content="#0f2b66" />
+    {blocks.map((b) => <script type="application/ld+json" set:html={JSON.stringify(b)} />)}
+  </head>
+  <body class="bg-surface font-body-md text-body-md text-on-surface antialiased">
+    <a href="#main" class="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[60] focus:rounded-lg focus:bg-white focus:px-4 focus:py-2 focus:text-primary">Skip to content</a>
+    <Header />
+    <main id="main" class="w-full bg-surface pt-20">
+      <slot />
+    </main>
+    <Footer />
+  </body>
+</html>

@@ -1,0 +1,48 @@
+---
+import { Image } from "astro:assets";
+import { Icon } from "astro-icon/components";
+import photo from "../assets/technician-kitchen.jpg";
+import { business } from "../data/facts.js";
+import { reasons, math } from "../data/home.js";
+const tones = { gold: "bg-gradient-to-br from-amber-500 to-amber-400 text-slate-950", blue: "bg-blue-600 text-white" };
+const statTone = { cobalt: "text-cobalt", gold: "text-amber-700" };
+---
+
+<section class="section relative bg-gradient-to-b from-navy-900 to-[#0c1a36] text-white" id="why-us">
+  <div class="mx-auto flex max-w-7xl flex-col gap-14">
+    <div class="mx-auto flex max-w-3xl flex-col gap-3 text-center">
+      <span class="eyebrow mx-auto border-amber-400/40 bg-amber-400/20 text-amber-300">The Contractor Advantage</span>
+      <h2 class="font-headline-lg text-[28px] font-bold leading-9 text-white sm:text-headline-lg">Why {business.city} Home Service Pros Choose Vasat AI</h2>
+      <p class="font-body-md text-body-md text-slate-300">We aren't a generic marketing agency. We specialize exclusively in the trades.</p>
+    </div>
+    <ul class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-4">
+      {reasons.map((r) => (
+        <li class="flex flex-col gap-3 rounded-2xl border border-blue-400/20 bg-navy-card p-6 text-white shadow-lg">
+          <div class={`flex h-12 w-12 items-center justify-center rounded-xl shadow-md ${tones[r.tone]}`}>
+            <Icon name={r.icon} class="h-[26px] w-[26px]" aria-hidden="true" />
+          </div>
+          <h3 class="font-headline-sm text-headline-sm font-bold text-white">{r.title}</h3>
+          <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">{r.text}</p>
+        </li>
+      ))}
+    </ul>
+    <div class="grid grid-cols-1 items-center overflow-hidden rounded-2xl border border-slate-200 bg-white text-on-surface shadow-2xl lg:grid-cols-12">
+      <div class="relative h-64 lg:col-span-6 lg:h-96">
+        <Image src={photo} alt="A home service technician repairing a dishwasher in a customer's kitchen" widths={[512, 800]} sizes="(min-width: 1024px) 50vw, 100vw" class="h-full w-full object-cover" />
+      </div>
+      <div class="flex flex-col gap-4 p-8 lg:col-span-6 lg:p-12">
+        <span class="w-fit rounded border border-amber-300 bg-amber-100 px-3 py-1 font-label-sm text-label-sm font-bold uppercase text-amber-800">The Math</span>
+        <h3 class="font-headline-md text-headline-md font-bold text-on-surface">Before vs. After Vasat AI</h3>
+        <p class="font-body-md text-body-md leading-relaxed text-on-surface-variant">{math.text}</p>
+        <dl class="flex flex-wrap items-stretch gap-x-6 gap-y-4 pt-2">
+          {math.stats.map((s, i) => (
+            <div class={i ? "border-slate-200 sm:border-l sm:pl-6" : ""}>
+              <dd class={`font-headline-md text-headline-md font-extrabold ${statTone[s.tone]}`}>{s.value}</dd>
+              <dt class="max-w-[9rem] font-label-sm text-label-sm font-medium text-on-surface-variant">{s.label}</dt>
+            </div>
+          ))}
+        </dl>
+      </div>
+    </div>
+  </div>
+</section>

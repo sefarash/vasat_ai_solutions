@@ -1,0 +1,87 @@
+---
+import { Icon } from "astro-icon/components";
+import BookButton from "./BookButton.astro";
+import { service, usd } from "../data/facts.js";
+import { serviceCopy, voiceAgent } from "../data/home.js";
+const order = ["local-service-website", "meta-ads", "custom-crm"];
+const tones = {
+  blue: { card: "hover:border-blue-400/50", icon: "bg-blue-600 text-white", tag: "border-blue-400/30 bg-blue-500/20 text-blue-300" },
+  gold: { card: "hover:border-amber-400/50", icon: "bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950", tag: "border-amber-400/30 bg-amber-400/20 text-amber-300" },
+};
+const voice = service("ai-voice-agent");
+---
+
+<section class="section bg-gradient-to-b from-navy-850 to-navy-950 text-white" id="services">
+  <div class="mx-auto flex max-w-7xl flex-col gap-14">
+    <div class="flex flex-col justify-between gap-6 md:flex-row md:items-end">
+      <div class="flex max-w-3xl flex-col gap-3">
+        <span class="eyebrow border-blue-400/30 bg-blue-500/20 text-blue-300">Full Pipeline Automation</span>
+        <h2 class="font-headline-lg text-[28px] font-bold leading-9 text-white sm:text-headline-lg">Everything Your Home Service Business Needs to Dominate Your Local Market</h2>
+        <p class="font-body-md text-body-md text-slate-300">Use one service. Combine two. Or deploy the full stack. Pragmatic technology built for busy contractors who just want their phone to ring with paying customers.</p>
+      </div>
+      <BookButton label="Request a Service Demo" class="btn-gold shrink-0 self-start px-6 py-3 font-label-lg text-label-lg shadow-lg hover:shadow-amber-500/20 md:self-auto" />
+    </div>
+
+    <div class="grid grid-cols-1 gap-6 md:grid-cols-2 lg:grid-cols-3">
+      {order.map((slug) => {
+        const s = service(slug);
+        const copy = serviceCopy[slug];
+        const tone = tones[copy.tone];
+        return (
+          <article class={`flex flex-col gap-4 rounded-2xl border border-blue-400/20 bg-navy-card p-7 text-white shadow-xl transition-all ${tone.card}`}>
+            <div class="flex items-center justify-between">
+              <div class={`flex h-12 w-12 items-center justify-center rounded-xl shadow-md ${tone.icon}`}>
+                <Icon name={copy.icon} class="h-[26px] w-[26px]" aria-hidden="true" />
+              </div>
+              <span class={`rounded-full border px-3 py-1 font-label-sm text-label-sm font-bold ${tone.tag}`}>{copy.tag}</span>
+            </div>
+            <h3 class="font-headline-md text-headline-md font-bold text-white">{s.name}</h3>
+            <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">{copy.tagline}</p>
+            <ul class="mt-auto flex flex-col gap-2 border-t border-white/10 pt-4">
+              {copy.bullets.map((b) => (
+                <li class="flex items-start gap-2 font-label-sm text-label-sm text-slate-200">
+                  <Icon name="material-symbols:check-circle-outline" class="h-[18px] w-[18px] shrink-0 text-amber-400" aria-hidden="true" /> {b}
+                </li>
+              ))}
+            </ul>
+            <p class="font-label-lg text-label-lg text-amber-300">From {usd(s.from_monthly)}/mo</p>
+          </article>
+        );
+      })}
+
+      <article class="relative flex flex-col gap-4 rounded-2xl border-2 border-amber-400/40 bg-gradient-to-br from-[#122b5e] via-[#0d224d] to-[#0a1a3b] p-7 text-white shadow-2xl md:col-span-2">
+        <div class="flex items-center justify-between">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-r from-amber-500 to-amber-400 text-slate-950 shadow-lg">
+            <Icon name="material-symbols:mic-outline" class="h-7 w-7" aria-hidden="true" />
+          </div>
+          <span class="rounded-full border border-amber-400/50 bg-gradient-to-r from-amber-500/20 to-amber-400/20 px-3.5 py-1 font-label-sm text-label-sm font-bold text-amber-300">24/7 Flagship System</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md font-bold text-white">{voice.name} (24/7 Call &amp; Appointment Booking)</h3>
+        <p class="font-body-md text-body-md leading-relaxed text-slate-200">{voiceAgent.tagline}</p>
+        <div class="grid grid-cols-1 gap-3 pt-3 sm:grid-cols-3">
+          {voiceAgent.points.map((p) => (
+            <div class="rounded-xl border border-white/10 bg-white/5 p-3.5">
+              <span class="block font-label-sm text-label-sm font-bold text-amber-300">{p.title}</span>
+              <span class="font-body-sm text-body-sm text-slate-300">{p.text}</span>
+            </div>
+          ))}
+        </div>
+        <p class="font-label-lg text-label-lg text-amber-300">From {usd(voice.from_monthly)}/mo</p>
+      </article>
+
+      <article class="flex flex-col gap-4 rounded-2xl border border-amber-400/30 bg-navy-card p-7 text-white shadow-xl transition-all hover:border-amber-400/60">
+        <div class="flex items-center justify-between">
+          <div class="flex h-12 w-12 items-center justify-center rounded-xl bg-gradient-to-br from-amber-500 to-amber-600 text-slate-950 shadow-md">
+            <Icon name="material-symbols:layers-outline" class="h-[26px] w-[26px]" aria-hidden="true" />
+          </div>
+          <span class="rounded-full border border-amber-400/30 bg-amber-400/20 px-3 py-1 font-label-sm text-label-sm font-bold text-amber-300">Best Value</span>
+        </div>
+        <h3 class="font-headline-md text-headline-md font-bold text-white">The Full Stack Bundle</h3>
+        <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">All four services in one managed growth system. Leads come in, AI answers, the CRM tracks, and ads run. Each piece makes the others more effective.</p>
+        <a class="mt-auto inline-flex items-center gap-1.5 border-t border-white/10 pt-4 font-label-lg text-label-lg text-amber-300 hover:text-amber-200" href="#pricing">
+          See full stack pricing <Icon name="material-symbols:arrow-forward" class="h-4 w-4" aria-hidden="true" />
+        </a>
+      </article>
+    </div>
+  </div>
+</section>

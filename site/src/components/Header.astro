@@ -1,0 +1,45 @@
+---
+import { Icon } from "astro-icon/components";
+import logo from "../assets/logo.svg";
+import BookButton from "./BookButton.astro";
+import { business } from "../data/facts.js";
+import { nav } from "../data/home.js";
+---
+
+<header class="fixed top-0 z-50 w-full border-b border-surface-container bg-white/95 shadow-sm backdrop-blur-xl">
+  <div class="mx-auto flex h-20 max-w-7xl items-center justify-between gap-gutter px-6 lg:px-12">
+    <a class="group flex items-center gap-3" href="/" aria-label={`${business.name} home`}>
+      <img src={logo.src} alt={business.name} width={logo.width} height={logo.height} loading="eager" class="h-12 w-auto object-contain transition-transform group-hover:scale-[1.02] sm:h-14" />
+    </a>
+    <nav class="hidden items-center gap-gutter xl:flex" aria-label="Primary">
+      {nav.map((item) => <a class="font-label-lg text-label-lg text-on-surface-variant transition-colors hover:text-primary" href={item.href}>{item.label}</a>)}
+    </nav>
+    <div class="flex items-center gap-space-md">
+      <BookButton label="Book Free Consultation" class="btn-gold rounded-lg px-4 py-2.5 font-label-lg text-label-lg shadow-[0_2px_8px_rgba(212,175,55,0.35)] hover:shadow-[0_4px_16px_rgba(212,175,55,0.45)] sm:px-5" />
+      <button type="button" id="menu-toggle" class="flex h-10 w-10 items-center justify-center rounded-lg border border-primary/20 bg-primary/10 text-primary xl:hidden" aria-controls="mobile-menu" aria-expanded="false" aria-label="Open menu">
+        <Icon name="material-symbols:menu" class="h-6 w-6" data-open />
+        <Icon name="material-symbols:close" class="hidden h-6 w-6" data-close />
+      </button>
+    </div>
+  </div>
+  <nav id="mobile-menu" class="hidden border-t border-surface-container bg-white px-6 py-4 xl:hidden" aria-label="Mobile">
+    <ul class="mx-auto flex max-w-7xl flex-col">
+      {nav.map((item) => <li><a class="block border-b border-surface-container-low py-3 font-label-lg text-label-lg text-on-surface hover:text-primary" href={item.href}>{item.label}</a></li>)}
+    </ul>
+  </nav>
+</header>
+
+<script>
+  const toggle = document.getElementById("menu-toggle");
+  const menu = document.getElementById("mobile-menu");
+  const set = (open: boolean) => {
+    menu?.classList.toggle("hidden", !open);
+    toggle?.setAttribute("aria-expanded", String(open));
+    toggle?.setAttribute("aria-label", open ? "Close menu" : "Open menu");
+    toggle?.querySelector("[data-open]")?.classList.toggle("hidden", open);
+    toggle?.querySelector("[data-close]")?.classList.toggle("hidden", !open);
+  };
+  toggle?.addEventListener("click", () => set(toggle.getAttribute("aria-expanded") !== "true"));
+  menu?.addEventListener("click", (e) => (e.target as HTMLElement).closest("a") && set(false));
+  document.addEventListener("keydown", (e) => e.key === "Escape" && set(false));
+</script>
