@@ -3,6 +3,8 @@ import { Icon } from "astro-icon/components";
 import BookButton from "./BookButton.astro";
 import { business, booking, leadForm } from "../data/facts.js";
 import { trades } from "../data/home.js";
+// Netlify Forms reads this form from the built HTML at deploy time. Form detection must be on in the
+// Netlify dashboard, and a field added here only registers after the next deploy.
 const label = "font-label-sm text-label-sm font-semibold text-on-surface";
 const field = "w-full rounded-lg border border-slate-200 bg-surface-container-low px-4 py-3 font-body-sm text-body-sm text-on-surface focus:border-transparent focus:outline-none focus:ring-2 focus:ring-blue-600";
 const tile = "flex h-10 w-10 shrink-0 items-center justify-center rounded-xl border";

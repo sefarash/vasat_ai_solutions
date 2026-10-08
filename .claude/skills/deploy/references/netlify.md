@@ -8,6 +8,7 @@ Confirmed with the Netlify CLI and by deploying:
 - A push to `main` deploys to production automatically, in well under a minute.
 - A pull request gets a deploy preview at `https://deploy-preview-<PR number>--joyful-mochi-6d6b03.netlify.app`. Netlify does not post a status check or a comment on the pull request, so do not wait for one: list the deploys instead (`netlify api listSiteDeploys --data '{"site_id":"<id>","per_page":5}'`; the id comes from `netlify api listSites`).
 - The CLI is installed and logged in on the owner's machine, but this folder is not linked (`netlify link`), so pass the site id explicitly.
+- Netlify cancels a build when nothing under `site/` changed ("no content change"). An empty commit, or a commit that only touches skills, tools or docs, does not produce a new deploy. To force one, change a file under `site/` or use "Trigger deploy" in the dashboard.
 - Form detection was not active on the first preview (no form listed after the deploy). The owner enables it in the dashboard under Forms; a new deploy is needed afterwards for the form to register.
 
 ## Preview deploys
