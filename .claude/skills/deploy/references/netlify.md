@@ -1,10 +1,14 @@
 # Netlify: how this site is hosted
 
-## What is known and what to confirm
+## What is known
 
-Known from the repo and the live responses: the production domain is served by Netlify, and `netlify.toml` in the repo root publishes the root directory with three rules (clean URLs for the two legal pages, and a catch-all that rewrites every other path to `/index.html` with status 200).
+Confirmed with the Netlify CLI and by deploying:
 
-Not recorded in the repo, so confirm once and write the answer here: whether the Netlify site is connected to the GitHub repo for automatic deploys on push to `main` (the usual setup), whether deploy previews for pull requests are enabled, and the Netlify site name. `netlify status` and `netlify sites:list` answer this if the CLI is installed and logged in; otherwise the owner can read it from the Netlify dashboard under Site configuration → Build & deploy.
+- The Netlify project is `joyful-mochi-6d6b03`, connected to this GitHub repo, with the production domain from `data/site.json`.
+- A push to `main` deploys to production automatically, in well under a minute.
+- A pull request gets a deploy preview at `https://deploy-preview-<PR number>--joyful-mochi-6d6b03.netlify.app`. Netlify does not post a status check or a comment on the pull request, so do not wait for one: list the deploys instead (`netlify api listSiteDeploys --data '{"site_id":"<id>","per_page":5}'`; the id comes from `netlify api listSites`).
+- The CLI is installed and logged in on the owner's machine, but this folder is not linked (`netlify link`), so pass the site id explicitly.
+- Form detection was not active on the first preview (no form listed after the deploy). The owner enables it in the dashboard under Forms; a new deploy is needed afterwards for the form to register.
 
 ## Preview deploys
 
