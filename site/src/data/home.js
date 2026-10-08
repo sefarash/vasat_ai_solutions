@@ -6,7 +6,6 @@ export const nav = [
   { href: "/#industries", label: "Industries" },
   { href: "/#how-it-works", label: "How It Works" },
   { href: "/#why-us", label: "Why Vasat AI" },
-  { href: "/#pricing", label: "Pricing" },
   { href: "/#faq", label: "FAQ" },
   { href: "/#contact", label: "Contact" },
 ];
@@ -99,13 +98,6 @@ export const testimonials = [
   },
 ];
 export const reservedSpots = 2;
-
-export const planFeatures = {
-  "Essential Starter": ["AI Voice Agent (Basic)", "CRM Platform Access", "5-Page Local Website", "1 Meta Ad Campaign", "Up to $300 ad spend managed", "Basic Monthly Report", "Email Support"],
-  Growth: ["AI Voice Agent (Advanced)", "CRM + Outbound Follow-Up", "8-Page Website + Blog", "2 Meta Ad Campaigns", "Up to $600 ad spend managed", "Review Request Automation", "Detailed Monthly Report", "Email + Chat Support"],
-  Elite: ["AI Voice Agent (Fully Branded)", "CRM + Full Automation Suite", "Full SEO Website Build", "4 Meta Ad Campaigns", "Up to $1,000 ad spend managed", "Review + Repeat Customer Automation", "Full Performance Dashboard", "Priority Support + Monthly Strategy Call"],
-};
-export const popularPlan = "Growth";
 
 export const faqs = [
   { q: "Do I have to buy the full package or can I start with just one service?", a: "You can start with any single service — many clients begin with just the AI Voice Agent or a new website and add more over time. There's no requirement to take the full stack. We'll recommend the right starting point on your strategy call." },

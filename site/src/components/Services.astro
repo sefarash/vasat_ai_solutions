@@ -1,7 +1,7 @@
 ---
 import { Icon } from "astro-icon/components";
 import BookButton from "./BookButton.astro";
-import { service, usd } from "../data/facts.js";
+import { service } from "../data/facts.js";
 import { serviceCopy, voiceAgent } from "../data/home.js";
 const order = ["local-service-website", "meta-ads", "custom-crm"];
 const tones = {
@@ -44,7 +44,6 @@ const voice = service("ai-voice-agent");
                 </li>
               ))}
             </ul>
-            <p class="font-label-lg text-label-lg text-amber-300">From {usd(s.from_monthly)}/mo</p>
           </article>
         );
       })}
@@ -66,7 +65,6 @@ const voice = service("ai-voice-agent");
             </div>
           ))}
         </div>
-        <p class="font-label-lg text-label-lg text-amber-300">From {usd(voice.from_monthly)}/mo</p>
       </article>
 
       <article class="flex flex-col gap-4 rounded-2xl border border-amber-400/30 bg-navy-card p-7 text-white shadow-xl transition-all hover:border-amber-400/60">
@@ -78,8 +76,8 @@ const voice = service("ai-voice-agent");
         </div>
         <h3 class="font-headline-md text-headline-md font-bold text-white">The Full Stack Bundle</h3>
         <p class="font-body-sm text-body-sm leading-relaxed text-slate-300">All four services in one managed growth system. Leads come in, AI answers, the CRM tracks, and ads run. Each piece makes the others more effective.</p>
-        <a class="mt-auto inline-flex items-center gap-1.5 border-t border-white/10 pt-4 font-label-lg text-label-lg text-amber-300 hover:text-amber-200" href="#pricing">
-          See full stack pricing <Icon name="material-symbols:arrow-forward" class="h-4 w-4" aria-hidden="true" />
+        <a class="mt-auto inline-flex items-center gap-1.5 border-t border-white/10 pt-4 font-label-lg text-label-lg text-amber-300 hover:text-amber-200" href="#contact">
+          Talk to us about the full stack <Icon name="material-symbols:arrow-forward" class="h-4 w-4" aria-hidden="true" />
         </a>
       </article>
     </div>
